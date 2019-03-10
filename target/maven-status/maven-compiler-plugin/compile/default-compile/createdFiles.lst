@@ -1,0 +1,16 @@
+ObjectParser$AttributeValueContext.class
+ObjectParser$TypeIdContext.class
+ObjectParser$AttributeNameContext.class
+ObjectParser$ItemsContext.class
+ObjectLexer.class
+ObjectParser$AttributesContext.class
+ObjectParser.class
+ObjectListener.class
+Main.class
+ObjectParser$RootContext.class
+ObjectParser$NameContext.class
+ObjectParser$AttributeContext.class
+ObjectParser$FlagContext.class
+ObjectParser$FlagsContext.class
+ObjectParser$DescriptionContext.class
+ObjectBaseListener.class
