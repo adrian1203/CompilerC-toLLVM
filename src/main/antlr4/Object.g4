@@ -1,66 +1,43 @@
 grammar Object;
 
-root:
-    items+
-    ;
+/* PARSER */
 
-items:
-    ('TypeId' '=' typeId) ('Name' '=' name) ('Description' '=' description)? ('Attributes' '=' attributes)? ('Flags' '=' flags)?
-    ;
-typeId:
-     NUMBER
-    ;
-name:
-    TEXT
-    ;
-description:
-    TEXT
-    ;
-flags:
-    ('{') flag+ ('}')
-    ;
-flag:
-    STRING
-    ;
-attributes:
-    ('{')  attribute+ ('}')
-    ;
-attribute:
-    attributeName STRING?'=' attributeValue
-    ;
-attributeName:
-    STRING;
-attributeValue:
-    NUMBER;
+root: items+;
 
-fragment DIGIT:
-   ('-')? '0'..'9'
-;
+items: ('TypeId' '=' typeId) ('Name' '=' name) ('Description' '=' description)? ('Attributes' '=' attributes)? ('Flags' '=' flags)?;
 
-TEXT:
-    '"' .*? '"'
-;
+typeId: NUMBER;
 
-STRING:
-    ('a'..'z' | 'A'..'Z')+
-;
+name: TEXT;
 
-NUMBER:
-    DIGIT+
-;
+description: TEXT;
 
-WHITESPACE:
-    ' ' -> skip
-;
+flags: ('{') flag+ ('}');
 
-COMMA_SEPARATOR :
-    ',' -> skip
-;
+flag: STRING;
 
-NEWLINE :
-    ('\n' | '\r' | '\r\n') -> skip
-;
+attributes: ('{')  attribute+ ('}');
 
-COMMENT     :
-    '#' ~( '\r' | '\n' )* -> skip
-    ;
+attribute: attributeName STRING?'=' attributeValue;
+
+attributeName: STRING;
+
+attributeValue: NUMBER;
+
+/* LEXER */
+
+fragment DIGIT: ('-')? '0'..'9';
+
+TEXT: '"' .*? '"';
+
+STRING: ('a'..'z' | 'A'..'Z')+;
+
+NUMBER: DIGIT+;
+
+WHITESPACE: ' ' -> skip;
+
+COMMA_SEPARATOR : ',' -> skip;
+
+NEWLINE : ('\n' | '\r' | '\r\n') -> skip;
+
+COMMENT : '#' ~( '\r' | '\n' )* -> skip;
