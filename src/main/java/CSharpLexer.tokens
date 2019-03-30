@@ -1,0 +1,16 @@
+T__0=1
+T__1=2
+T__2=3
+DATATYPE=4
+ID=5
+INT=6
+FLOAT=7
+COMA=8
+SEMICOLON=9
+EQUAL=10
+'int'=1
+'float'=2
+'show'=3
+','=8
+';'=9
+'='=10

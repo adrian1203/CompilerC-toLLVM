@@ -2,13 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1397b42c-d8bd-4500-b3d8-ba3401ec129c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/antlr4/Chat.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/antlr4/CSharp.g4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/MainCSharp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/antlr4/Object.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/antlr4/Object.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ChatBaseListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ChatLexer.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ChatLexer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ChatLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ChatListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ChatParser.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatBaseListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatLexer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatParser$ChatContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatParser$ColorContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatParser$CommandContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatParser$EmoticonContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatParser$LineContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatParser$LinkContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatParser$MentionContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatParser$MessageContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatParser$NameContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/CompilerCSharpLLVM.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ObjectParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ObjectParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Object.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectBaseListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectLexer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectParser$AttributeContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectParser$AttributeNameContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectParser$AttributeValueContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectParser$AttributesContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectParser$DescriptionContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectParser$FlagContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectParser$FlagsContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectParser$ItemsContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectParser$NameContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectParser$RootContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectParser$TypeIdContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/antlr4/Object.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/antlr4/ObjectBaseListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/antlr4/ObjectLexer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/antlr4/ObjectLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/antlr4/ObjectListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/antlr4/ObjectParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,11 +65,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/antlr4/CSharp.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+            <state relative-caret-position="255">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/MainCSharp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -33,32 +87,29 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ChatBaseListener.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CSharpBaseListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+            <state relative-caret-position="323">
+              <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
               <folding>
-                <element signature="e#707#708#0" expanded="true" />
-                <element signature="e#737#738#0" expanded="true" />
-                <element signature="e#2862#2863#0" expanded="true" />
-                <element signature="e#2883#2884#0" expanded="true" />
-                <element signature="e#3060#3061#0" expanded="true" />
-                <element signature="e#3082#3083#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#575#576#0" expanded="true" />
+                <element signature="e#598#599#0" expanded="true" />
+                <element signature="e#646#647#0" expanded="true" />
+                <element signature="e#679#680#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/antlr4/Chat.g4">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="857">
-              <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -71,7 +122,12 @@
         <option value="$PROJECT_DIR$/src/main/antlr4/Test.g4" />
         <option value="$PROJECT_DIR$/src/main/antlr4/Chat.g4" />
         <option value="$PROJECT_DIR$/src/main/java/ChatBaseListener.java" />
+        <option value="$PROJECT_DIR$/target/generated-sources/antlr4/CSharpBaseListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/antlr4/CSharpBaseListener.java" />
+        <option value="$PROJECT_DIR$/src/main/antlr4/CSharp.g4" />
+        <option value="$PROJECT_DIR$/src/main/java/CSharpBaseListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/MainCSharp.java" />
       </list>
     </option>
   </component>
@@ -103,22 +159,22 @@
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="CSSharpLLVM" type="b2602c69:ProjectViewProjectNode" />
               <item name="CompilerCSharpLLVM" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSSharpLLVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CompilerCSharpLLVM" type="462c0819:PsiDirectoryNode" />
-              <item name="gen" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CSSharpLLVM" type="b2602c69:ProjectViewProjectNode" />
@@ -145,15 +201,23 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="CSSharpLLVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CompilerCSharpLLVM" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="$PROJECT_DIR$/src/main/antlr4/CSharp.g4::/auto-gen" value="false" />
+    <property name="$PROJECT_DIR$/src/main/antlr4/CSharp.g4::/gen-listener" value="true" />
+    <property name="$PROJECT_DIR$/src/main/antlr4/CSharp.g4::/gen-visitor" value="false" />
+    <property name="$PROJECT_DIR$/src/main/antlr4/CSharp.g4::/language" value="Java" />
+    <property name="$PROJECT_DIR$/src/main/antlr4/CSharp.g4::/output-dir" value="C:\Users\Adrian\Desktop\Kompilatory\Projekt\CompilerCSharpLLVM\src\main\java" />
     <property name="$PROJECT_DIR$/src/main/antlr4/Chat.g4::/auto-gen" value="false" />
     <property name="$PROJECT_DIR$/src/main/antlr4/Chat.g4::/gen-listener" value="true" />
     <property name="$PROJECT_DIR$/src/main/antlr4/Chat.g4::/gen-visitor" value="false" />
@@ -161,7 +225,7 @@
     <property name="$PROJECT_DIR$/src/main/antlr4/Chat.g4::/output-dir" value="E:\AGH\SemestrVI\OneDrive\Kompilatory\GitProject\CompilerCSharpLLVM\src\main\java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553789682924" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553947841238" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -182,7 +246,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MainCSharp">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -191,7 +255,14 @@
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="CompilerCSharpLLVM" />
+      <module name="CSSharpLLVM" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainCSharp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainCSharp" />
+      <module name="CSSharpLLVM" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -204,14 +275,12 @@
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="TestNG">
-      <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <properties />
       <listeners />
@@ -228,8 +297,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.MainCSharp" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainCSharp" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -253,7 +327,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8540000" />
+    <option name="totallyTimeSpent" value="15763000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -265,10 +339,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19296375" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -277,19 +351,19 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28805238" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32932165" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32932165" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.19639935" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Tool Output" order="9" weight="0.32932165" />
+      <window_info anchor="bottom" id="Tool Output" order="9" weight="0.14893617" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32936078" />
       <window_info anchor="bottom" id="ANTLR Preview" order="13" weight="0.32932165" />
-      <window_info anchor="bottom" id="Messages" order="14" weight="0.32827735" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.2405892" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -301,6 +375,40 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3715221" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32932165" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.19639935" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Tool Output" order="9" visible="true" weight="0.14893617" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.32936078" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="13" weight="0.32932165" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.2405892" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.32995737" />
+      <window_info anchor="right" id="PlantUML" order="4" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -328,9 +436,7 @@
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa12104.23978/lab4/lab4_example/ejb3-server-war/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa12104.23978/lab4/lab4_example/ejb3-server-war/pom.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/antlr4/Object.g4">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -345,19 +451,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gen/Chat.interp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChatParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-396" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChatListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1122" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/Chat.interp" />
+    <entry file="file://$PROJECT_DIR$/src/ChatParser.java" />
+    <entry file="file://$PROJECT_DIR$/src/ChatListener.java" />
     <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/ObjectLexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
@@ -372,32 +468,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/antlr4/Chat.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="857">
-          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ChatBaseListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-          <folding>
-            <element signature="e#707#708#0" expanded="true" />
-            <element signature="e#737#738#0" expanded="true" />
-            <element signature="e#2862#2863#0" expanded="true" />
-            <element signature="e#2883#2884#0" expanded="true" />
-            <element signature="e#3060#3061#0" expanded="true" />
-            <element signature="e#3082#3083#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/CSharpLexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1003">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/ChatBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-280">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/antlr4/Chat.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/CSharpBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="59" lean-forward="true" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/CSharpParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        <state relative-caret-position="295">
+          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/antlr4/CSharpBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CSharpBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#575#576#0" expanded="true" />
+            <element signature="e#598#599#0" expanded="true" />
+            <element signature="e#646#647#0" expanded="true" />
+            <element signature="e#679#680#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/antlr4/CSharp.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MainCSharp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
