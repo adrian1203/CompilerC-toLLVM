@@ -27,23 +27,83 @@ public interface CSharpListener extends ParseTreeListener {
 	 */
 	void exitStatement(CSharpParser.StatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CSharpParser#decl}.
+	 * Enter a parse tree produced by {@link CSharpParser#declarationList}.
 	 * @param ctx the parse tree
 	 */
-	void enterDecl(CSharpParser.DeclContext ctx);
+	void enterDeclarationList(CSharpParser.DeclarationListContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CSharpParser#decl}.
+	 * Exit a parse tree produced by {@link CSharpParser#declarationList}.
 	 * @param ctx the parse tree
 	 */
-	void exitDecl(CSharpParser.DeclContext ctx);
+	void exitDeclarationList(CSharpParser.DeclarationListContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CSharpParser#procedure}.
+	 * Enter a parse tree produced by {@link CSharpParser#declaration}.
 	 * @param ctx the parse tree
 	 */
-	void enterProcedure(CSharpParser.ProcedureContext ctx);
+	void enterDeclaration(CSharpParser.DeclarationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CSharpParser#procedure}.
+	 * Exit a parse tree produced by {@link CSharpParser#declaration}.
 	 * @param ctx the parse tree
 	 */
-	void exitProcedure(CSharpParser.ProcedureContext ctx);
+	void exitDeclaration(CSharpParser.DeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#variableDec}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariableDec(CSharpParser.VariableDecContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#variableDec}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariableDec(CSharpParser.VariableDecContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#arrayDec}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayDec(CSharpParser.ArrayDecContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#arrayDec}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayDec(CSharpParser.ArrayDecContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#arrayVal}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayVal(CSharpParser.ArrayValContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#arrayVal}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayVal(CSharpParser.ArrayValContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#varType}.
+	 * @param ctx the parse tree
+	 */
+	void enterVarType(CSharpParser.VarTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#varType}.
+	 * @param ctx the parse tree
+	 */
+	void exitVarType(CSharpParser.VarTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterValue(CSharpParser.ValueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitValue(CSharpParser.ValueContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#assignment}.
+	 * @param ctx the parse tree
+	 */
+	void enterAssignment(CSharpParser.AssignmentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#assignment}.
+	 * @param ctx the parse tree
+	 */
+	void exitAssignment(CSharpParser.AssignmentContext ctx);
 }

@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 public class MainCSharp {
     public static void main(String[] args) {
         try {
-            String tmp = "int cos = 10; float b = 10.0; float b; int c;";
+            String tmp = "float b = 10.36; int b; char b = 'h';";
             ANTLRInputStream input = new ANTLRInputStream(tmp);
             CSharpLexer lexer = new CSharpLexer(input);
             CommonTokenStream commonTokenStream = new CommonTokenStream(lexer);
