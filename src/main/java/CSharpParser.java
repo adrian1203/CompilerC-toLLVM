@@ -19,9 +19,10 @@ public class CSharpParser extends Parser {
 		Integer=1, Float=2, String=3, CharAss=4, WhiteSpace=5, SpecialChars=6, 
 		MathOperator=7, BooleanOperator=8, LogicalOperator=9, Boolean=10, If=11, 
 		Elsif=12, Else=13, Then=14, IntegerType=15, FloatType=16, StringType=17, 
-		BooleanType=18, CharType=19, VarName=20, EqualMark=21, Dot=22, QuoteMark=23, 
-		Semicolon=24, OpenBracket=25, CloseBracket=26, SquareOpenBracket=27, SquareCloseBracket=28, 
-		Apostrophe=29, Text=30, Whitespace=31, Newline=32, BlockComment=33, LineComment=34;
+		BooleanType=18, CharType=19, DoubleType=20, VarName=21, EqualMark=22, 
+		Dot=23, QuoteMark=24, Semicolon=25, OpenBracket=26, CloseBracket=27, SquareOpenBracket=28, 
+		SquareCloseBracket=29, Apostrophe=30, Text=31, Whitespace=32, Newline=33, 
+		BlockComment=34, LineComment=35;
 	public static final int
 		RULE_program = 0, RULE_statement = 1, RULE_declarationList = 2, RULE_declaration = 3, 
 		RULE_variableDec = 4, RULE_arrayDec = 5, RULE_arrayVal = 6, RULE_varType = 7, 
@@ -37,9 +38,9 @@ public class CSharpParser extends Parser {
 	private static String[] makeLiteralNames() {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, "'if'", 
-			"'elsif'", "'else'", "'then'", "'int'", "'float'", "'string'", "'bool'", 
-			"'char'", null, "'='", "'.'", "'\"'", "';'", "'('", "')'", "'['", "']'", 
-			"'''"
+			"'elsif'", "'else'", "'then'", "'int'", "'float'", "'string'", null, 
+			"'char'", "'double'", null, "'='", "'.'", "'\"'", "';'", "'('", "')'", 
+			"'['", "']'", "'''"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -48,8 +49,8 @@ public class CSharpParser extends Parser {
 			null, "Integer", "Float", "String", "CharAss", "WhiteSpace", "SpecialChars", 
 			"MathOperator", "BooleanOperator", "LogicalOperator", "Boolean", "If", 
 			"Elsif", "Else", "Then", "IntegerType", "FloatType", "StringType", "BooleanType", 
-			"CharType", "VarName", "EqualMark", "Dot", "QuoteMark", "Semicolon", 
-			"OpenBracket", "CloseBracket", "SquareOpenBracket", "SquareCloseBracket", 
+			"CharType", "DoubleType", "VarName", "EqualMark", "Dot", "QuoteMark", 
+			"Semicolon", "OpenBracket", "CloseBracket", "SquareOpenBracket", "SquareCloseBracket", 
 			"Apostrophe", "Text", "Whitespace", "Newline", "BlockComment", "LineComment"
 		};
 	}
@@ -145,7 +146,7 @@ public class CSharpParser extends Parser {
 				setState(23); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IntegerType) | (1L << FloatType) | (1L << StringType) | (1L << BooleanType) | (1L << CharType))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IntegerType) | (1L << FloatType) | (1L << StringType) | (1L << BooleanType) | (1L << CharType) | (1L << DoubleType))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -544,6 +545,7 @@ public class CSharpParser extends Parser {
 		public TerminalNode StringType() { return getToken(CSharpParser.StringType, 0); }
 		public TerminalNode BooleanType() { return getToken(CSharpParser.BooleanType, 0); }
 		public TerminalNode CharType() { return getToken(CSharpParser.CharType, 0); }
+		public TerminalNode DoubleType() { return getToken(CSharpParser.DoubleType, 0); }
 		public VarTypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -567,7 +569,7 @@ public class CSharpParser extends Parser {
 			{
 			setState(71);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IntegerType) | (1L << FloatType) | (1L << StringType) | (1L << BooleanType) | (1L << CharType))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IntegerType) | (1L << FloatType) | (1L << StringType) | (1L << BooleanType) | (1L << CharType) | (1L << DoubleType))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -761,6 +763,7 @@ public class CSharpParser extends Parser {
 		public TerminalNode Boolean() { return getToken(CSharpParser.Boolean, 0); }
 		public TerminalNode StringType() { return getToken(CSharpParser.StringType, 0); }
 		public TerminalNode String() { return getToken(CSharpParser.String, 0); }
+		public TerminalNode DoubleType() { return getToken(CSharpParser.DoubleType, 0); }
 		public AssignmentContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -779,7 +782,7 @@ public class CSharpParser extends Parser {
 		AssignmentContext _localctx = new AssignmentContext(_ctx, getState());
 		enterRule(_localctx, 18, RULE_assignment);
 		try {
-			setState(120);
+			setState(125);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case IntegerType:
@@ -857,6 +860,21 @@ public class CSharpParser extends Parser {
 				match(Semicolon);
 				}
 				break;
+			case DoubleType:
+				enterOuterAlt(_localctx, 6);
+				{
+				setState(120);
+				match(DoubleType);
+				setState(121);
+				match(VarName);
+				setState(122);
+				match(EqualMark);
+				setState(123);
+				match(Float);
+				setState(124);
+				match(Semicolon);
+				}
+				break;
 			default:
 				throw new NoViableAltException(this);
 			}
@@ -888,38 +906,40 @@ public class CSharpParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3$}\4\2\t\2\4\3\t\3"+
-		"\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3\2"+
-		"\6\2\30\n\2\r\2\16\2\31\3\3\3\3\5\3\36\n\3\3\4\3\4\3\4\3\4\3\4\7\4%\n"+
-		"\4\f\4\16\4(\13\4\3\5\3\5\5\5,\n\5\3\5\3\5\3\6\3\6\3\6\3\7\3\7\3\7\3\7"+
-		"\3\7\3\7\7\79\n\7\f\7\16\7<\13\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\7\bE\n\b"+
-		"\f\b\16\bH\13\b\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\5\nR\n\n\3\n\3\n\3\n\3"+
-		"\n\3\n\3\n\3\n\5\n[\n\n\7\n]\n\n\f\n\16\n`\13\n\3\13\3\13\3\13\3\13\3"+
-		"\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3"+
-		"\13\3\13\3\13\3\13\3\13\3\13\3\13\5\13{\n\13\3\13\2\3\6\f\2\4\6\b\n\f"+
-		"\16\20\22\24\2\3\3\2\21\25\2\u0087\2\27\3\2\2\2\4\35\3\2\2\2\6\37\3\2"+
-		"\2\2\b+\3\2\2\2\n/\3\2\2\2\f\62\3\2\2\2\16=\3\2\2\2\20I\3\2\2\2\22Q\3"+
-		"\2\2\2\24z\3\2\2\2\26\30\5\4\3\2\27\26\3\2\2\2\30\31\3\2\2\2\31\27\3\2"+
-		"\2\2\31\32\3\2\2\2\32\3\3\2\2\2\33\36\5\6\4\2\34\36\5\24\13\2\35\33\3"+
-		"\2\2\2\35\34\3\2\2\2\36\5\3\2\2\2\37 \b\4\1\2 !\5\b\5\2!&\3\2\2\2\"#\f"+
-		"\3\2\2#%\5\b\5\2$\"\3\2\2\2%(\3\2\2\2&$\3\2\2\2&\'\3\2\2\2\'\7\3\2\2\2"+
-		"(&\3\2\2\2),\5\n\6\2*,\5\f\7\2+)\3\2\2\2+*\3\2\2\2,-\3\2\2\2-.\7\32\2"+
-		"\2.\t\3\2\2\2/\60\5\20\t\2\60\61\7\26\2\2\61\13\3\2\2\2\62\63\5\20\t\2"+
-		"\63\64\7\26\2\2\64\65\7\35\2\2\65:\7\36\2\2\66\67\7\35\2\2\679\7\36\2"+
-		"\28\66\3\2\2\29<\3\2\2\2:8\3\2\2\2:;\3\2\2\2;\r\3\2\2\2<:\3\2\2\2=>\7"+
-		"\26\2\2>?\7\35\2\2?@\7\3\2\2@F\7\36\2\2AB\7\35\2\2BC\7\3\2\2CE\7\36\2"+
-		"\2DA\3\2\2\2EH\3\2\2\2FD\3\2\2\2FG\3\2\2\2G\17\3\2\2\2HF\3\2\2\2IJ\t\2"+
-		"\2\2J\21\3\2\2\2KR\7\26\2\2LR\5\16\b\2MR\7\3\2\2NR\7\4\2\2OR\7\5\2\2P"+
-		"R\7\6\2\2QK\3\2\2\2QL\3\2\2\2QM\3\2\2\2QN\3\2\2\2QO\3\2\2\2QP\3\2\2\2"+
-		"R^\3\2\2\2SZ\7\t\2\2T[\7\26\2\2U[\5\16\b\2V[\7\3\2\2W[\7\4\2\2X[\7\5\2"+
-		"\2Y[\7\6\2\2ZT\3\2\2\2ZU\3\2\2\2ZV\3\2\2\2ZW\3\2\2\2ZX\3\2\2\2ZY\3\2\2"+
-		"\2[]\3\2\2\2\\S\3\2\2\2]`\3\2\2\2^\\\3\2\2\2^_\3\2\2\2_\23\3\2\2\2`^\3"+
-		"\2\2\2ab\7\21\2\2bc\7\26\2\2cd\7\27\2\2de\7\3\2\2e{\7\32\2\2fg\7\22\2"+
-		"\2gh\7\26\2\2hi\7\27\2\2ij\7\4\2\2j{\7\32\2\2kl\7\25\2\2lm\7\26\2\2mn"+
-		"\7\27\2\2no\7\6\2\2o{\7\32\2\2pq\7\24\2\2qr\7\26\2\2rs\7\27\2\2st\7\f"+
-		"\2\2t{\7\32\2\2uv\7\23\2\2vw\7\26\2\2wx\7\27\2\2xy\7\5\2\2y{\7\32\2\2"+
-		"za\3\2\2\2zf\3\2\2\2zk\3\2\2\2zp\3\2\2\2zu\3\2\2\2{\25\3\2\2\2\f\31\35"+
-		"&+:FQZ^z";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3%\u0082\4\2\t\2\4"+
+		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
+		"\13\3\2\6\2\30\n\2\r\2\16\2\31\3\3\3\3\5\3\36\n\3\3\4\3\4\3\4\3\4\3\4"+
+		"\7\4%\n\4\f\4\16\4(\13\4\3\5\3\5\5\5,\n\5\3\5\3\5\3\6\3\6\3\6\3\7\3\7"+
+		"\3\7\3\7\3\7\3\7\7\79\n\7\f\7\16\7<\13\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\7"+
+		"\bE\n\b\f\b\16\bH\13\b\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\5\nR\n\n\3\n\3"+
+		"\n\3\n\3\n\3\n\3\n\3\n\5\n[\n\n\7\n]\n\n\f\n\16\n`\13\n\3\13\3\13\3\13"+
+		"\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13"+
+		"\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\5\13"+
+		"\u0080\n\13\3\13\2\3\6\f\2\4\6\b\n\f\16\20\22\24\2\3\3\2\21\26\2\u008d"+
+		"\2\27\3\2\2\2\4\35\3\2\2\2\6\37\3\2\2\2\b+\3\2\2\2\n/\3\2\2\2\f\62\3\2"+
+		"\2\2\16=\3\2\2\2\20I\3\2\2\2\22Q\3\2\2\2\24\177\3\2\2\2\26\30\5\4\3\2"+
+		"\27\26\3\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\3\3\2\2\2"+
+		"\33\36\5\6\4\2\34\36\5\24\13\2\35\33\3\2\2\2\35\34\3\2\2\2\36\5\3\2\2"+
+		"\2\37 \b\4\1\2 !\5\b\5\2!&\3\2\2\2\"#\f\3\2\2#%\5\b\5\2$\"\3\2\2\2%(\3"+
+		"\2\2\2&$\3\2\2\2&\'\3\2\2\2\'\7\3\2\2\2(&\3\2\2\2),\5\n\6\2*,\5\f\7\2"+
+		"+)\3\2\2\2+*\3\2\2\2,-\3\2\2\2-.\7\33\2\2.\t\3\2\2\2/\60\5\20\t\2\60\61"+
+		"\7\27\2\2\61\13\3\2\2\2\62\63\5\20\t\2\63\64\7\27\2\2\64\65\7\36\2\2\65"+
+		":\7\37\2\2\66\67\7\36\2\2\679\7\37\2\28\66\3\2\2\29<\3\2\2\2:8\3\2\2\2"+
+		":;\3\2\2\2;\r\3\2\2\2<:\3\2\2\2=>\7\27\2\2>?\7\36\2\2?@\7\3\2\2@F\7\37"+
+		"\2\2AB\7\36\2\2BC\7\3\2\2CE\7\37\2\2DA\3\2\2\2EH\3\2\2\2FD\3\2\2\2FG\3"+
+		"\2\2\2G\17\3\2\2\2HF\3\2\2\2IJ\t\2\2\2J\21\3\2\2\2KR\7\27\2\2LR\5\16\b"+
+		"\2MR\7\3\2\2NR\7\4\2\2OR\7\5\2\2PR\7\6\2\2QK\3\2\2\2QL\3\2\2\2QM\3\2\2"+
+		"\2QN\3\2\2\2QO\3\2\2\2QP\3\2\2\2R^\3\2\2\2SZ\7\t\2\2T[\7\27\2\2U[\5\16"+
+		"\b\2V[\7\3\2\2W[\7\4\2\2X[\7\5\2\2Y[\7\6\2\2ZT\3\2\2\2ZU\3\2\2\2ZV\3\2"+
+		"\2\2ZW\3\2\2\2ZX\3\2\2\2ZY\3\2\2\2[]\3\2\2\2\\S\3\2\2\2]`\3\2\2\2^\\\3"+
+		"\2\2\2^_\3\2\2\2_\23\3\2\2\2`^\3\2\2\2ab\7\21\2\2bc\7\27\2\2cd\7\30\2"+
+		"\2de\7\3\2\2e\u0080\7\33\2\2fg\7\22\2\2gh\7\27\2\2hi\7\30\2\2ij\7\4\2"+
+		"\2j\u0080\7\33\2\2kl\7\25\2\2lm\7\27\2\2mn\7\30\2\2no\7\6\2\2o\u0080\7"+
+		"\33\2\2pq\7\24\2\2qr\7\27\2\2rs\7\30\2\2st\7\f\2\2t\u0080\7\33\2\2uv\7"+
+		"\23\2\2vw\7\27\2\2wx\7\30\2\2xy\7\5\2\2y\u0080\7\33\2\2z{\7\26\2\2{|\7"+
+		"\27\2\2|}\7\30\2\2}~\7\4\2\2~\u0080\7\33\2\2\177a\3\2\2\2\177f\3\2\2\2"+
+		"\177k\3\2\2\2\177p\3\2\2\2\177u\3\2\2\2\177z\3\2\2\2\u0080\25\3\2\2\2"+
+		"\f\31\35&+:FQZ^\177";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

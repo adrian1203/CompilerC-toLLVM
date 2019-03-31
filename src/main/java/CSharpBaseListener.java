@@ -90,6 +90,9 @@ public class CSharpBaseListener implements CSharpListener {
 		if(ctx.varType().CharType()!=null){
 			translate+="@"+ctx.VarName().toString() + "=gloabl i8 0 ";
 		}
+		if(ctx.varType().DoubleType()!=null){
+			translate+="@"+ctx.VarName().toString() + "=double i8 0 ";
+		}
 		translate+=", algin 8 \n";
 
 	}
@@ -165,7 +168,9 @@ public class CSharpBaseListener implements CSharpListener {
 			int asci = (int)ctx.CharAss().toString().substring(1,2).toCharArray()[0];
 			translate+="@"+ctx.VarName().toString() + ctx.EqualMark().toString() + "global i8 "+ asci;
 		}
-
+		if(ctx.DoubleType()!=null){
+			translate+="@"+ctx.VarName().toString() + ctx.EqualMark().toString() + "global double "+ ctx.Float().toString();
+		}
 		translate+=", algin 8 \n";
 	}
 

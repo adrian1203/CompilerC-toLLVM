@@ -18,7 +18,7 @@ arrayDec : varType VarName SquareOpenBracket SquareCloseBracket (SquareOpenBrack
 
 arrayVal : VarName SquareOpenBracket Integer SquareCloseBracket ((SquareOpenBracket Integer SquareCloseBracket)*);
 
-varType : IntegerType | FloatType | StringType | BooleanType | CharType;
+varType : IntegerType | FloatType | StringType | BooleanType | CharType | DoubleType;
 
 
 value : (VarName | arrayVal | Integer | Float | String |  CharAss ) (MathOperator (VarName | arrayVal | Integer | Float | String| CharAss ))*;
@@ -27,7 +27,9 @@ assignment : IntegerType VarName EqualMark Integer Semicolon |
              FloatType VarName EqualMark Float Semicolon |
              CharType VarName EqualMark CharAss Semicolon |
              BooleanType VarName EqualMark Boolean Semicolon |
-            StringType VarName EqualMark String Semicolon;
+            StringType VarName EqualMark String Semicolon|
+            DoubleType VarName EqualMark Float Semicolon;
+
 
 Integer : Digit+;
 
@@ -58,6 +60,7 @@ FloatType: 'float';
 StringType: 'string';
 BooleanType :'bool' | 'boolean';
 CharType: 'char';
+DoubleType: 'double';
 VarName : Char (Char | Digit)*;
 EqualMark : '=' ;
 Dot : '.';
