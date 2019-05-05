@@ -21,16 +21,18 @@ public class CSharpParser extends Parser {
 		Elsif=12, Else=13, Then=14, IntegerType=15, FloatType=16, StringType=17, 
 		BooleanType=18, CharType=19, DoubleType=20, VarName=21, EqualMark=22, 
 		Dot=23, QuoteMark=24, Semicolon=25, OpenBracket=26, CloseBracket=27, SquareOpenBracket=28, 
-		SquareCloseBracket=29, Apostrophe=30, Text=31, Whitespace=32, Newline=33, 
-		BlockComment=34, LineComment=35;
+		SquareCloseBracket=29, Apostrophe=30, CurlyOpenBracket=31, CurlyCloseBracket=32, 
+		Text=33, Whitespace=34, Newline=35, BlockComment=36, LineComment=37;
 	public static final int
-		RULE_program = 0, RULE_statement = 1, RULE_declarationList = 2, RULE_declaration = 3, 
-		RULE_variableDec = 4, RULE_arrayDec = 5, RULE_arrayVal = 6, RULE_varType = 7, 
-		RULE_value = 8, RULE_assignment = 9;
+		RULE_program = 0, RULE_statement = 1, RULE_declarationList = 2, RULE_logicalStatement = 3, 
+		RULE_ifStatement = 4, RULE_instructionsBlock = 5, RULE_declaration = 6, 
+		RULE_variableDec = 7, RULE_arrayDec = 8, RULE_arrayVal = 9, RULE_varType = 10, 
+		RULE_value = 11, RULE_assignment = 12;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"program", "statement", "declarationList", "declaration", "variableDec", 
-			"arrayDec", "arrayVal", "varType", "value", "assignment"
+			"program", "statement", "declarationList", "logicalStatement", "ifStatement", 
+			"instructionsBlock", "declaration", "variableDec", "arrayDec", "arrayVal", 
+			"varType", "value", "assignment"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -40,7 +42,7 @@ public class CSharpParser extends Parser {
 			null, null, null, null, null, null, null, null, null, null, null, "'if'", 
 			"'elsif'", "'else'", "'then'", "'int'", "'float'", "'string'", null, 
 			"'char'", "'double'", null, "'='", "'.'", "'\"'", "';'", "'('", "')'", 
-			"'['", "']'", "'''"
+			"'['", "']'", "'''", "'{'", "'}'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -51,7 +53,8 @@ public class CSharpParser extends Parser {
 			"Elsif", "Else", "Then", "IntegerType", "FloatType", "StringType", "BooleanType", 
 			"CharType", "DoubleType", "VarName", "EqualMark", "Dot", "QuoteMark", 
 			"Semicolon", "OpenBracket", "CloseBracket", "SquareOpenBracket", "SquareCloseBracket", 
-			"Apostrophe", "Text", "Whitespace", "Newline", "BlockComment", "LineComment"
+			"Apostrophe", "CurlyOpenBracket", "CurlyCloseBracket", "Text", "Whitespace", 
+			"Newline", "BlockComment", "LineComment"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -133,20 +136,20 @@ public class CSharpParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(21); 
+			setState(27); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(20);
+				setState(26);
 				statement();
 				}
 				}
-				setState(23); 
+				setState(29); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IntegerType) | (1L << FloatType) | (1L << StringType) | (1L << BooleanType) | (1L << CharType) | (1L << DoubleType))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << If) | (1L << IntegerType) | (1L << FloatType) | (1L << StringType) | (1L << BooleanType) | (1L << CharType) | (1L << DoubleType))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -167,6 +170,9 @@ public class CSharpParser extends Parser {
 		public AssignmentContext assignment() {
 			return getRuleContext(AssignmentContext.class,0);
 		}
+		public InstructionsBlockContext instructionsBlock() {
+			return getRuleContext(InstructionsBlockContext.class,0);
+		}
 		public StatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -185,21 +191,28 @@ public class CSharpParser extends Parser {
 		StatementContext _localctx = new StatementContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_statement);
 		try {
-			setState(27);
+			setState(34);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(25);
+				setState(31);
 				declarationList(0);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(26);
+				setState(32);
 				assignment();
+				}
+				break;
+			case 3:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(33);
+				instructionsBlock();
 				}
 				break;
 			}
@@ -252,11 +265,11 @@ public class CSharpParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			{
-			setState(30);
+			setState(37);
 			declaration();
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(36);
+			setState(43);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -267,14 +280,14 @@ public class CSharpParser extends Parser {
 					{
 					_localctx = new DeclarationListContext(_parentctx, _parentState);
 					pushNewRecursionContext(_localctx, _startState, RULE_declarationList);
-					setState(32);
+					setState(39);
 					if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
-					setState(33);
+					setState(40);
 					declaration();
 					}
 					} 
 				}
-				setState(38);
+				setState(45);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			}
@@ -287,6 +300,296 @@ public class CSharpParser extends Parser {
 		}
 		finally {
 			unrollRecursionContexts(_parentctx);
+		}
+		return _localctx;
+	}
+
+	public static class LogicalStatementContext extends ParserRuleContext {
+		public List<ValueContext> value() {
+			return getRuleContexts(ValueContext.class);
+		}
+		public ValueContext value(int i) {
+			return getRuleContext(ValueContext.class,i);
+		}
+		public TerminalNode BooleanOperator() { return getToken(CSharpParser.BooleanOperator, 0); }
+		public TerminalNode Boolean() { return getToken(CSharpParser.Boolean, 0); }
+		public LogicalStatementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_logicalStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CSharpListener ) ((CSharpListener)listener).enterLogicalStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CSharpListener ) ((CSharpListener)listener).exitLogicalStatement(this);
+		}
+	}
+
+	public final LogicalStatementContext logicalStatement() throws RecognitionException {
+		LogicalStatementContext _localctx = new LogicalStatementContext(_ctx, getState());
+		enterRule(_localctx, 6, RULE_logicalStatement);
+		try {
+			setState(51);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case Integer:
+			case Float:
+			case String:
+			case CharAss:
+			case VarName:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(46);
+				value();
+				setState(47);
+				match(BooleanOperator);
+				setState(48);
+				value();
+				}
+				break;
+			case Boolean:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(50);
+				match(Boolean);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class IfStatementContext extends ParserRuleContext {
+		public List<TerminalNode> If() { return getTokens(CSharpParser.If); }
+		public TerminalNode If(int i) {
+			return getToken(CSharpParser.If, i);
+		}
+		public List<TerminalNode> OpenBracket() { return getTokens(CSharpParser.OpenBracket); }
+		public TerminalNode OpenBracket(int i) {
+			return getToken(CSharpParser.OpenBracket, i);
+		}
+		public List<LogicalStatementContext> logicalStatement() {
+			return getRuleContexts(LogicalStatementContext.class);
+		}
+		public LogicalStatementContext logicalStatement(int i) {
+			return getRuleContext(LogicalStatementContext.class,i);
+		}
+		public List<TerminalNode> CloseBracket() { return getTokens(CSharpParser.CloseBracket); }
+		public TerminalNode CloseBracket(int i) {
+			return getToken(CSharpParser.CloseBracket, i);
+		}
+		public List<TerminalNode> CurlyOpenBracket() { return getTokens(CSharpParser.CurlyOpenBracket); }
+		public TerminalNode CurlyOpenBracket(int i) {
+			return getToken(CSharpParser.CurlyOpenBracket, i);
+		}
+		public List<InstructionsBlockContext> instructionsBlock() {
+			return getRuleContexts(InstructionsBlockContext.class);
+		}
+		public InstructionsBlockContext instructionsBlock(int i) {
+			return getRuleContext(InstructionsBlockContext.class,i);
+		}
+		public List<TerminalNode> CurlyCloseBracket() { return getTokens(CSharpParser.CurlyCloseBracket); }
+		public TerminalNode CurlyCloseBracket(int i) {
+			return getToken(CSharpParser.CurlyCloseBracket, i);
+		}
+		public List<TerminalNode> Else() { return getTokens(CSharpParser.Else); }
+		public TerminalNode Else(int i) {
+			return getToken(CSharpParser.Else, i);
+		}
+		public IfStatementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_ifStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CSharpListener ) ((CSharpListener)listener).enterIfStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CSharpListener ) ((CSharpListener)listener).exitIfStatement(this);
+		}
+	}
+
+	public final IfStatementContext ifStatement() throws RecognitionException {
+		IfStatementContext _localctx = new IfStatementContext(_ctx, getState());
+		enterRule(_localctx, 8, RULE_ifStatement);
+		int _la;
+		try {
+			int _alt;
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(53);
+			match(If);
+			setState(54);
+			match(OpenBracket);
+			setState(55);
+			logicalStatement();
+			setState(56);
+			match(CloseBracket);
+			setState(57);
+			match(CurlyOpenBracket);
+			setState(58);
+			instructionsBlock();
+			setState(59);
+			match(CurlyCloseBracket);
+			setState(79);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==Else) {
+				{
+				setState(71);
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
+				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+					if ( _alt==1 ) {
+						{
+						{
+						setState(60);
+						match(Else);
+						setState(61);
+						match(If);
+						setState(62);
+						match(OpenBracket);
+						setState(63);
+						logicalStatement();
+						setState(64);
+						match(CloseBracket);
+						setState(65);
+						match(CurlyOpenBracket);
+						setState(66);
+						instructionsBlock();
+						setState(67);
+						match(CurlyCloseBracket);
+						}
+						} 
+					}
+					setState(73);
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
+				}
+				setState(74);
+				match(Else);
+				setState(75);
+				match(CurlyOpenBracket);
+				setState(76);
+				instructionsBlock();
+				setState(77);
+				match(CurlyCloseBracket);
+				}
+			}
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class InstructionsBlockContext extends ParserRuleContext {
+		public List<DeclarationContext> declaration() {
+			return getRuleContexts(DeclarationContext.class);
+		}
+		public DeclarationContext declaration(int i) {
+			return getRuleContext(DeclarationContext.class,i);
+		}
+		public List<IfStatementContext> ifStatement() {
+			return getRuleContexts(IfStatementContext.class);
+		}
+		public IfStatementContext ifStatement(int i) {
+			return getRuleContext(IfStatementContext.class,i);
+		}
+		public List<AssignmentContext> assignment() {
+			return getRuleContexts(AssignmentContext.class);
+		}
+		public AssignmentContext assignment(int i) {
+			return getRuleContext(AssignmentContext.class,i);
+		}
+		public InstructionsBlockContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_instructionsBlock; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CSharpListener ) ((CSharpListener)listener).enterInstructionsBlock(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CSharpListener ) ((CSharpListener)listener).exitInstructionsBlock(this);
+		}
+	}
+
+	public final InstructionsBlockContext instructionsBlock() throws RecognitionException {
+		InstructionsBlockContext _localctx = new InstructionsBlockContext(_ctx, getState());
+		enterRule(_localctx, 10, RULE_instructionsBlock);
+		try {
+			int _alt;
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(84); 
+			_errHandler.sync(this);
+			_alt = 1;
+			do {
+				switch (_alt) {
+				case 1:
+					{
+					setState(84);
+					_errHandler.sync(this);
+					switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+					case 1:
+						{
+						setState(81);
+						declaration();
+						}
+						break;
+					case 2:
+						{
+						setState(82);
+						ifStatement();
+						}
+						break;
+					case 3:
+						{
+						setState(83);
+						assignment();
+						}
+						break;
+					}
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
+				}
+				setState(86); 
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
 		}
 		return _localctx;
 	}
@@ -315,27 +618,27 @@ public class CSharpParser extends Parser {
 
 	public final DeclarationContext declaration() throws RecognitionException {
 		DeclarationContext _localctx = new DeclarationContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_declaration);
+		enterRule(_localctx, 12, RULE_declaration);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(41);
+			setState(90);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
 				{
-				setState(39);
+				setState(88);
 				variableDec();
 				}
 				break;
 			case 2:
 				{
-				setState(40);
+				setState(89);
 				arrayDec();
 				}
 				break;
 			}
-			setState(43);
+			setState(92);
 			match(Semicolon);
 			}
 		}
@@ -371,13 +674,13 @@ public class CSharpParser extends Parser {
 
 	public final VariableDecContext variableDec() throws RecognitionException {
 		VariableDecContext _localctx = new VariableDecContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_variableDec);
+		enterRule(_localctx, 14, RULE_variableDec);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(45);
+			setState(94);
 			varType();
-			setState(46);
+			setState(95);
 			match(VarName);
 			}
 		}
@@ -421,32 +724,32 @@ public class CSharpParser extends Parser {
 
 	public final ArrayDecContext arrayDec() throws RecognitionException {
 		ArrayDecContext _localctx = new ArrayDecContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_arrayDec);
+		enterRule(_localctx, 16, RULE_arrayDec);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(48);
+			setState(97);
 			varType();
-			setState(49);
+			setState(98);
 			match(VarName);
-			setState(50);
+			setState(99);
 			match(SquareOpenBracket);
-			setState(51);
+			setState(100);
 			match(SquareCloseBracket);
-			setState(56);
+			setState(105);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==SquareOpenBracket) {
 				{
 				{
-				setState(52);
+				setState(101);
 				match(SquareOpenBracket);
-				setState(53);
+				setState(102);
 				match(SquareCloseBracket);
 				}
 				}
-				setState(58);
+				setState(107);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -493,35 +796,35 @@ public class CSharpParser extends Parser {
 
 	public final ArrayValContext arrayVal() throws RecognitionException {
 		ArrayValContext _localctx = new ArrayValContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_arrayVal);
+		enterRule(_localctx, 18, RULE_arrayVal);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(59);
+			setState(108);
 			match(VarName);
-			setState(60);
+			setState(109);
 			match(SquareOpenBracket);
-			setState(61);
+			setState(110);
 			match(Integer);
-			setState(62);
+			setState(111);
 			match(SquareCloseBracket);
 			{
-			setState(68);
+			setState(117);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==SquareOpenBracket) {
 				{
 				{
-				setState(63);
+				setState(112);
 				match(SquareOpenBracket);
-				setState(64);
+				setState(113);
 				match(Integer);
-				setState(65);
+				setState(114);
 				match(SquareCloseBracket);
 				}
 				}
-				setState(70);
+				setState(119);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -562,12 +865,12 @@ public class CSharpParser extends Parser {
 
 	public final VarTypeContext varType() throws RecognitionException {
 		VarTypeContext _localctx = new VarTypeContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_varType);
+		enterRule(_localctx, 20, RULE_varType);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(71);
+			setState(120);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << IntegerType) | (1L << FloatType) | (1L << StringType) | (1L << BooleanType) | (1L << CharType) | (1L << DoubleType))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -637,102 +940,102 @@ public class CSharpParser extends Parser {
 
 	public final ValueContext value() throws RecognitionException {
 		ValueContext _localctx = new ValueContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_value);
+		enterRule(_localctx, 22, RULE_value);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(79);
+			setState(128);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,11,_ctx) ) {
 			case 1:
 				{
-				setState(73);
+				setState(122);
 				match(VarName);
 				}
 				break;
 			case 2:
 				{
-				setState(74);
+				setState(123);
 				arrayVal();
 				}
 				break;
 			case 3:
 				{
-				setState(75);
+				setState(124);
 				match(Integer);
 				}
 				break;
 			case 4:
 				{
-				setState(76);
+				setState(125);
 				match(Float);
 				}
 				break;
 			case 5:
 				{
-				setState(77);
+				setState(126);
 				match(String);
 				}
 				break;
 			case 6:
 				{
-				setState(78);
+				setState(127);
 				match(CharAss);
 				}
 				break;
 			}
-			setState(92);
+			setState(141);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==MathOperator) {
 				{
 				{
-				setState(81);
+				setState(130);
 				match(MathOperator);
-				setState(88);
+				setState(137);
 				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
+				switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
 				case 1:
 					{
-					setState(82);
+					setState(131);
 					match(VarName);
 					}
 					break;
 				case 2:
 					{
-					setState(83);
+					setState(132);
 					arrayVal();
 					}
 					break;
 				case 3:
 					{
-					setState(84);
+					setState(133);
 					match(Integer);
 					}
 					break;
 				case 4:
 					{
-					setState(85);
+					setState(134);
 					match(Float);
 					}
 					break;
 				case 5:
 					{
-					setState(86);
+					setState(135);
 					match(String);
 					}
 					break;
 				case 6:
 					{
-					setState(87);
+					setState(136);
 					match(CharAss);
 					}
 					break;
 				}
 				}
 				}
-				setState(94);
+				setState(143);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -780,98 +1083,98 @@ public class CSharpParser extends Parser {
 
 	public final AssignmentContext assignment() throws RecognitionException {
 		AssignmentContext _localctx = new AssignmentContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_assignment);
+		enterRule(_localctx, 24, RULE_assignment);
 		try {
-			setState(125);
+			setState(174);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case IntegerType:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(95);
+				setState(144);
 				match(IntegerType);
-				setState(96);
+				setState(145);
 				match(VarName);
-				setState(97);
+				setState(146);
 				match(EqualMark);
-				setState(98);
+				setState(147);
 				match(Integer);
-				setState(99);
+				setState(148);
 				match(Semicolon);
 				}
 				break;
 			case FloatType:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(100);
+				setState(149);
 				match(FloatType);
-				setState(101);
+				setState(150);
 				match(VarName);
-				setState(102);
+				setState(151);
 				match(EqualMark);
-				setState(103);
+				setState(152);
 				match(Float);
-				setState(104);
+				setState(153);
 				match(Semicolon);
 				}
 				break;
 			case CharType:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(105);
+				setState(154);
 				match(CharType);
-				setState(106);
+				setState(155);
 				match(VarName);
-				setState(107);
+				setState(156);
 				match(EqualMark);
-				setState(108);
+				setState(157);
 				match(CharAss);
-				setState(109);
+				setState(158);
 				match(Semicolon);
 				}
 				break;
 			case BooleanType:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(110);
+				setState(159);
 				match(BooleanType);
-				setState(111);
+				setState(160);
 				match(VarName);
-				setState(112);
+				setState(161);
 				match(EqualMark);
-				setState(113);
+				setState(162);
 				match(Boolean);
-				setState(114);
+				setState(163);
 				match(Semicolon);
 				}
 				break;
 			case StringType:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(115);
+				setState(164);
 				match(StringType);
-				setState(116);
+				setState(165);
 				match(VarName);
-				setState(117);
+				setState(166);
 				match(EqualMark);
-				setState(118);
+				setState(167);
 				match(String);
-				setState(119);
+				setState(168);
 				match(Semicolon);
 				}
 				break;
 			case DoubleType:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(120);
+				setState(169);
 				match(DoubleType);
-				setState(121);
+				setState(170);
 				match(VarName);
-				setState(122);
+				setState(171);
 				match(EqualMark);
-				setState(123);
+				setState(172);
 				match(Float);
-				setState(124);
+				setState(173);
 				match(Semicolon);
 				}
 				break;
@@ -906,40 +1209,60 @@ public class CSharpParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3%\u0082\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\'\u00b3\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
-		"\13\3\2\6\2\30\n\2\r\2\16\2\31\3\3\3\3\5\3\36\n\3\3\4\3\4\3\4\3\4\3\4"+
-		"\7\4%\n\4\f\4\16\4(\13\4\3\5\3\5\5\5,\n\5\3\5\3\5\3\6\3\6\3\6\3\7\3\7"+
-		"\3\7\3\7\3\7\3\7\7\79\n\7\f\7\16\7<\13\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\7"+
-		"\bE\n\b\f\b\16\bH\13\b\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\5\nR\n\n\3\n\3"+
-		"\n\3\n\3\n\3\n\3\n\3\n\5\n[\n\n\7\n]\n\n\f\n\16\n`\13\n\3\13\3\13\3\13"+
-		"\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13"+
-		"\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\5\13"+
-		"\u0080\n\13\3\13\2\3\6\f\2\4\6\b\n\f\16\20\22\24\2\3\3\2\21\26\2\u008d"+
-		"\2\27\3\2\2\2\4\35\3\2\2\2\6\37\3\2\2\2\b+\3\2\2\2\n/\3\2\2\2\f\62\3\2"+
-		"\2\2\16=\3\2\2\2\20I\3\2\2\2\22Q\3\2\2\2\24\177\3\2\2\2\26\30\5\4\3\2"+
-		"\27\26\3\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\3\3\2\2\2"+
-		"\33\36\5\6\4\2\34\36\5\24\13\2\35\33\3\2\2\2\35\34\3\2\2\2\36\5\3\2\2"+
-		"\2\37 \b\4\1\2 !\5\b\5\2!&\3\2\2\2\"#\f\3\2\2#%\5\b\5\2$\"\3\2\2\2%(\3"+
-		"\2\2\2&$\3\2\2\2&\'\3\2\2\2\'\7\3\2\2\2(&\3\2\2\2),\5\n\6\2*,\5\f\7\2"+
-		"+)\3\2\2\2+*\3\2\2\2,-\3\2\2\2-.\7\33\2\2.\t\3\2\2\2/\60\5\20\t\2\60\61"+
-		"\7\27\2\2\61\13\3\2\2\2\62\63\5\20\t\2\63\64\7\27\2\2\64\65\7\36\2\2\65"+
-		":\7\37\2\2\66\67\7\36\2\2\679\7\37\2\28\66\3\2\2\29<\3\2\2\2:8\3\2\2\2"+
-		":;\3\2\2\2;\r\3\2\2\2<:\3\2\2\2=>\7\27\2\2>?\7\36\2\2?@\7\3\2\2@F\7\37"+
-		"\2\2AB\7\36\2\2BC\7\3\2\2CE\7\37\2\2DA\3\2\2\2EH\3\2\2\2FD\3\2\2\2FG\3"+
-		"\2\2\2G\17\3\2\2\2HF\3\2\2\2IJ\t\2\2\2J\21\3\2\2\2KR\7\27\2\2LR\5\16\b"+
-		"\2MR\7\3\2\2NR\7\4\2\2OR\7\5\2\2PR\7\6\2\2QK\3\2\2\2QL\3\2\2\2QM\3\2\2"+
-		"\2QN\3\2\2\2QO\3\2\2\2QP\3\2\2\2R^\3\2\2\2SZ\7\t\2\2T[\7\27\2\2U[\5\16"+
-		"\b\2V[\7\3\2\2W[\7\4\2\2X[\7\5\2\2Y[\7\6\2\2ZT\3\2\2\2ZU\3\2\2\2ZV\3\2"+
-		"\2\2ZW\3\2\2\2ZX\3\2\2\2ZY\3\2\2\2[]\3\2\2\2\\S\3\2\2\2]`\3\2\2\2^\\\3"+
-		"\2\2\2^_\3\2\2\2_\23\3\2\2\2`^\3\2\2\2ab\7\21\2\2bc\7\27\2\2cd\7\30\2"+
-		"\2de\7\3\2\2e\u0080\7\33\2\2fg\7\22\2\2gh\7\27\2\2hi\7\30\2\2ij\7\4\2"+
-		"\2j\u0080\7\33\2\2kl\7\25\2\2lm\7\27\2\2mn\7\30\2\2no\7\6\2\2o\u0080\7"+
-		"\33\2\2pq\7\24\2\2qr\7\27\2\2rs\7\30\2\2st\7\f\2\2t\u0080\7\33\2\2uv\7"+
-		"\23\2\2vw\7\27\2\2wx\7\30\2\2xy\7\5\2\2y\u0080\7\33\2\2z{\7\26\2\2{|\7"+
-		"\27\2\2|}\7\30\2\2}~\7\4\2\2~\u0080\7\33\2\2\177a\3\2\2\2\177f\3\2\2\2"+
-		"\177k\3\2\2\2\177p\3\2\2\2\177u\3\2\2\2\177z\3\2\2\2\u0080\25\3\2\2\2"+
-		"\f\31\35&+:FQZ^\177";
+		"\13\4\f\t\f\4\r\t\r\4\16\t\16\3\2\6\2\36\n\2\r\2\16\2\37\3\3\3\3\3\3\5"+
+		"\3%\n\3\3\4\3\4\3\4\3\4\3\4\7\4,\n\4\f\4\16\4/\13\4\3\5\3\5\3\5\3\5\3"+
+		"\5\5\5\66\n\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6"+
+		"\3\6\3\6\7\6H\n\6\f\6\16\6K\13\6\3\6\3\6\3\6\3\6\3\6\5\6R\n\6\3\7\3\7"+
+		"\3\7\6\7W\n\7\r\7\16\7X\3\b\3\b\5\b]\n\b\3\b\3\b\3\t\3\t\3\t\3\n\3\n\3"+
+		"\n\3\n\3\n\3\n\7\nj\n\n\f\n\16\nm\13\n\3\13\3\13\3\13\3\13\3\13\3\13\3"+
+		"\13\7\13v\n\13\f\13\16\13y\13\13\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3\r\5\r\u0083"+
+		"\n\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\5\r\u008c\n\r\7\r\u008e\n\r\f\r\16\r"+
+		"\u0091\13\r\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16"+
+		"\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16"+
+		"\3\16\3\16\3\16\3\16\5\16\u00b1\n\16\3\16\2\3\6\17\2\4\6\b\n\f\16\20\22"+
+		"\24\26\30\32\2\3\3\2\21\26\2\u00c2\2\35\3\2\2\2\4$\3\2\2\2\6&\3\2\2\2"+
+		"\b\65\3\2\2\2\n\67\3\2\2\2\fV\3\2\2\2\16\\\3\2\2\2\20`\3\2\2\2\22c\3\2"+
+		"\2\2\24n\3\2\2\2\26z\3\2\2\2\30\u0082\3\2\2\2\32\u00b0\3\2\2\2\34\36\5"+
+		"\4\3\2\35\34\3\2\2\2\36\37\3\2\2\2\37\35\3\2\2\2\37 \3\2\2\2 \3\3\2\2"+
+		"\2!%\5\6\4\2\"%\5\32\16\2#%\5\f\7\2$!\3\2\2\2$\"\3\2\2\2$#\3\2\2\2%\5"+
+		"\3\2\2\2&\'\b\4\1\2\'(\5\16\b\2(-\3\2\2\2)*\f\3\2\2*,\5\16\b\2+)\3\2\2"+
+		"\2,/\3\2\2\2-+\3\2\2\2-.\3\2\2\2.\7\3\2\2\2/-\3\2\2\2\60\61\5\30\r\2\61"+
+		"\62\7\n\2\2\62\63\5\30\r\2\63\66\3\2\2\2\64\66\7\f\2\2\65\60\3\2\2\2\65"+
+		"\64\3\2\2\2\66\t\3\2\2\2\678\7\r\2\289\7\34\2\29:\5\b\5\2:;\7\35\2\2;"+
+		"<\7!\2\2<=\5\f\7\2=Q\7\"\2\2>?\7\17\2\2?@\7\r\2\2@A\7\34\2\2AB\5\b\5\2"+
+		"BC\7\35\2\2CD\7!\2\2DE\5\f\7\2EF\7\"\2\2FH\3\2\2\2G>\3\2\2\2HK\3\2\2\2"+
+		"IG\3\2\2\2IJ\3\2\2\2JL\3\2\2\2KI\3\2\2\2LM\7\17\2\2MN\7!\2\2NO\5\f\7\2"+
+		"OP\7\"\2\2PR\3\2\2\2QI\3\2\2\2QR\3\2\2\2R\13\3\2\2\2SW\5\16\b\2TW\5\n"+
+		"\6\2UW\5\32\16\2VS\3\2\2\2VT\3\2\2\2VU\3\2\2\2WX\3\2\2\2XV\3\2\2\2XY\3"+
+		"\2\2\2Y\r\3\2\2\2Z]\5\20\t\2[]\5\22\n\2\\Z\3\2\2\2\\[\3\2\2\2]^\3\2\2"+
+		"\2^_\7\33\2\2_\17\3\2\2\2`a\5\26\f\2ab\7\27\2\2b\21\3\2\2\2cd\5\26\f\2"+
+		"de\7\27\2\2ef\7\36\2\2fk\7\37\2\2gh\7\36\2\2hj\7\37\2\2ig\3\2\2\2jm\3"+
+		"\2\2\2ki\3\2\2\2kl\3\2\2\2l\23\3\2\2\2mk\3\2\2\2no\7\27\2\2op\7\36\2\2"+
+		"pq\7\3\2\2qw\7\37\2\2rs\7\36\2\2st\7\3\2\2tv\7\37\2\2ur\3\2\2\2vy\3\2"+
+		"\2\2wu\3\2\2\2wx\3\2\2\2x\25\3\2\2\2yw\3\2\2\2z{\t\2\2\2{\27\3\2\2\2|"+
+		"\u0083\7\27\2\2}\u0083\5\24\13\2~\u0083\7\3\2\2\177\u0083\7\4\2\2\u0080"+
+		"\u0083\7\5\2\2\u0081\u0083\7\6\2\2\u0082|\3\2\2\2\u0082}\3\2\2\2\u0082"+
+		"~\3\2\2\2\u0082\177\3\2\2\2\u0082\u0080\3\2\2\2\u0082\u0081\3\2\2\2\u0083"+
+		"\u008f\3\2\2\2\u0084\u008b\7\t\2\2\u0085\u008c\7\27\2\2\u0086\u008c\5"+
+		"\24\13\2\u0087\u008c\7\3\2\2\u0088\u008c\7\4\2\2\u0089\u008c\7\5\2\2\u008a"+
+		"\u008c\7\6\2\2\u008b\u0085\3\2\2\2\u008b\u0086\3\2\2\2\u008b\u0087\3\2"+
+		"\2\2\u008b\u0088\3\2\2\2\u008b\u0089\3\2\2\2\u008b\u008a\3\2\2\2\u008c"+
+		"\u008e\3\2\2\2\u008d\u0084\3\2\2\2\u008e\u0091\3\2\2\2\u008f\u008d\3\2"+
+		"\2\2\u008f\u0090\3\2\2\2\u0090\31\3\2\2\2\u0091\u008f\3\2\2\2\u0092\u0093"+
+		"\7\21\2\2\u0093\u0094\7\27\2\2\u0094\u0095\7\30\2\2\u0095\u0096\7\3\2"+
+		"\2\u0096\u00b1\7\33\2\2\u0097\u0098\7\22\2\2\u0098\u0099\7\27\2\2\u0099"+
+		"\u009a\7\30\2\2\u009a\u009b\7\4\2\2\u009b\u00b1\7\33\2\2\u009c\u009d\7"+
+		"\25\2\2\u009d\u009e\7\27\2\2\u009e\u009f\7\30\2\2\u009f\u00a0\7\6\2\2"+
+		"\u00a0\u00b1\7\33\2\2\u00a1\u00a2\7\24\2\2\u00a2\u00a3\7\27\2\2\u00a3"+
+		"\u00a4\7\30\2\2\u00a4\u00a5\7\f\2\2\u00a5\u00b1\7\33\2\2\u00a6\u00a7\7"+
+		"\23\2\2\u00a7\u00a8\7\27\2\2\u00a8\u00a9\7\30\2\2\u00a9\u00aa\7\5\2\2"+
+		"\u00aa\u00b1\7\33\2\2\u00ab\u00ac\7\26\2\2\u00ac\u00ad\7\27\2\2\u00ad"+
+		"\u00ae\7\30\2\2\u00ae\u00af\7\4\2\2\u00af\u00b1\7\33\2\2\u00b0\u0092\3"+
+		"\2\2\2\u00b0\u0097\3\2\2\2\u00b0\u009c\3\2\2\2\u00b0\u00a1\3\2\2\2\u00b0"+
+		"\u00a6\3\2\2\2\u00b0\u00ab\3\2\2\2\u00b1\33\3\2\2\2\21\37$-\65IQVX\\k"+
+		"w\u0082\u008b\u008f\u00b0";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

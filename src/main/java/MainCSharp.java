@@ -3,11 +3,18 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
+import java.util.Scanner;
+
 
 public class MainCSharp {
     public static void main(String[] args) {
         try {
             String tmp = "float b = 10.36; int b; char b = 'h'; double fff; double dddd = 120.456;";
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Podaj kod do C#  trnaslacji");
+
+            tmp = scanner.nextLine();
             ANTLRInputStream input = new ANTLRInputStream(tmp);
             CSharpLexer lexer = new CSharpLexer(input);
             CommonTokenStream commonTokenStream = new CommonTokenStream(lexer);

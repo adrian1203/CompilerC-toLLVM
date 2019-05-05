@@ -10,7 +10,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * of the available methods.
  */
 public class CSharpBaseListener implements CSharpListener {
-
 	private String translate;
 
 	public String getTranslate() {
@@ -20,7 +19,6 @@ public class CSharpBaseListener implements CSharpListener {
 	public CSharpBaseListener( ) {
 		this.translate = "";
 	}
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -62,6 +60,44 @@ public class CSharpBaseListener implements CSharpListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterLogicalStatement(CSharpParser.LogicalStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLogicalStatement(CSharpParser.LogicalStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIfStatement(CSharpParser.IfStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIfStatement(CSharpParser.IfStatementContext ctx) {
+		translate+="Działam w If";
+	}
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterInstructionsBlock(CSharpParser.InstructionsBlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInstructionsBlock(CSharpParser.InstructionsBlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDeclaration(CSharpParser.DeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -94,7 +130,6 @@ public class CSharpBaseListener implements CSharpListener {
 			translate+="@"+ctx.VarName().toString() + "=double i8 0 ";
 		}
 		translate+=", algin 8 \n";
-
 	}
 	/**
 	 * {@inheritDoc}
@@ -156,7 +191,6 @@ public class CSharpBaseListener implements CSharpListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAssignment(CSharpParser.AssignmentContext ctx) {
-
 		if(ctx.IntegerType()!=null){
 			translate+="@"+ctx.VarName().toString() + ctx.EqualMark().toString() + "global i32 "+ ctx.Integer().toString();
 		}

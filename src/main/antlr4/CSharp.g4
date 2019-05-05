@@ -6,9 +6,18 @@ grammar CSharp;
 
 program: statement+;
 
-statement : declarationList | assignment;
+statement : declarationList | assignment | instructionsBlock;
 
 declarationList : declaration | declarationList declaration;
+
+logicalStatement:  value BooleanOperator value | Boolean;
+
+ifStatement : If OpenBracket logicalStatement CloseBracket CurlyOpenBracket
+             instructionsBlock CurlyCloseBracket
+            ((Else If OpenBracket logicalStatement CloseBracket CurlyOpenBracket instructionsBlock CurlyCloseBracket)*
+             Else CurlyOpenBracket instructionsBlock CurlyCloseBracket)?;
+
+instructionsBlock : ( declaration | ifStatement | assignment)+;
 
 declaration : (variableDec | arrayDec) Semicolon;
 
@@ -71,6 +80,8 @@ CloseBracket : ')';
 SquareOpenBracket : '[';
 SquareCloseBracket : ']';
 Apostrophe: '\'';
+CurlyOpenBracket:'{';
+CurlyCloseBracket:'}';
 
 Text : (Char)* ;
 Whitespace

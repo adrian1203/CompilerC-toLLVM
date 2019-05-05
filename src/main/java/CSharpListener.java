@@ -37,6 +37,36 @@ public interface CSharpListener extends ParseTreeListener {
 	 */
 	void exitDeclarationList(CSharpParser.DeclarationListContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CSharpParser#logicalStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLogicalStatement(CSharpParser.LogicalStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#logicalStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLogicalStatement(CSharpParser.LogicalStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#ifStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfStatement(CSharpParser.IfStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#ifStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfStatement(CSharpParser.IfStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#instructionsBlock}.
+	 * @param ctx the parse tree
+	 */
+	void enterInstructionsBlock(CSharpParser.InstructionsBlockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#instructionsBlock}.
+	 * @param ctx the parse tree
+	 */
+	void exitInstructionsBlock(CSharpParser.InstructionsBlockContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CSharpParser#declaration}.
 	 * @param ctx the parse tree
 	 */
