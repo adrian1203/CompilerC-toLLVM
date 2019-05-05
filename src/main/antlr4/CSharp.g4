@@ -13,11 +13,16 @@ declarationList : declaration | declarationList declaration;
 logicalStatement:  value BooleanOperator value | Boolean;
 
 ifStatement : If OpenBracket logicalStatement CloseBracket CurlyOpenBracket
-             instructionsBlock CurlyCloseBracket
-            ((Else If OpenBracket logicalStatement CloseBracket CurlyOpenBracket instructionsBlock CurlyCloseBracket)*
-             Else CurlyOpenBracket instructionsBlock CurlyCloseBracket)?;
+             statementBlockTrue CurlyCloseBracket
+            ((Else ifStatement)*
+             Else CurlyOpenBracket statementBlockFalse CurlyCloseBracket)?;
 
 instructionsBlock : ( declaration | ifStatement | assignment)+;
+
+statementBlockTrue:  instructionsBlock;
+
+statementBlockFalse: instructionsBlock;
+
 
 declaration : (variableDec | arrayDec) Semicolon;
 

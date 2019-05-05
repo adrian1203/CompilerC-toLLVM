@@ -1,4 +1,4 @@
-// Generated from C:/Users/Adrian/Desktop/Kompilatory/Projekt/CompilerCSharpLLVM/src/main/antlr4\CSharp.g4 by ANTLR 4.7.2
+// Generated from E:/AGH/Projekty/CompilerCSharpLLVM/src/main/antlr4\CSharp.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -66,6 +66,26 @@ public interface CSharpListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInstructionsBlock(CSharpParser.InstructionsBlockContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#statementBlockTrue}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatementBlockTrue(CSharpParser.StatementBlockTrueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#statementBlockTrue}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatementBlockTrue(CSharpParser.StatementBlockTrueContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#statementBlockFalse}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatementBlockFalse(CSharpParser.StatementBlockFalseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#statementBlockFalse}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatementBlockFalse(CSharpParser.StatementBlockFalseContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CSharpParser#declaration}.
 	 * @param ctx the parse tree
