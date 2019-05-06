@@ -5,7 +5,10 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+import java.lang.reflect.Array;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -18,6 +21,7 @@ public class CSharpBaseListener implements CSharpListener {
 	private long labelCounter=0;
 	private Stack<Long> stackFalse = new Stack<>();
 	private Stack<Long> stackTrue = new Stack<>();
+	Queue<String> valueQueue = new LinkedList<String>();
 
 
 	public String getNextLabel(boolean isTrueStack){
@@ -83,17 +87,13 @@ public class CSharpBaseListener implements CSharpListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void enterLogicalStatement(CSharpParser.LogicalStatementContext ctx) {
-		if(!ctx.Boolean().toString().isEmpty())
+		if(ctx.Boolean()!=null)
 		{
-			translate +=  "br i1"+ctx.Boolean().toString()+", label %"+getNextLabel(true);
+			translate +=  "br i1 "+ctx.Boolean().toString()+", label %"+getNextLabel(true);
 			if(isFalseInCondition(ctx.getParent().children)){
 				translate+= ", label %"+getNextLabel(false);
 			}
 			translate+= "\n";
-		}
-		else
-		{
-			///
 		}
 	}
 	/**
@@ -101,7 +101,38 @@ public class CSharpBaseListener implements CSharpListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLogicalStatement(CSharpParser.LogicalStatementContext ctx) { }
+	@Override public void exitLogicalStatement(CSharpParser.LogicalStatementContext ctx) {
+		if(ctx.Boolean()==null)
+		{
+			if(ctx.BooleanOperator().toString().equals("<")){
+				translate+="%0 = icmp slt i32 %" ;
+			}
+			if(ctx.BooleanOperator().toString().equals("<=")){
+				translate+="%0 = icmp sle i32 %" ;
+			}
+			if(ctx.BooleanOperator().toString().equals(">")){
+				translate+="%0 = icmp sgt i32 %" ;
+			}
+			if(ctx.BooleanOperator().toString().equals(">=")){
+				translate+="%0 = icmp sge i32 %" ;
+			}
+			if(ctx.BooleanOperator().toString().equals("==")){
+				translate+="%0 = icmp eq i32 %" ;
+			}
+			if(ctx.BooleanOperator().toString().equals("!=")){
+				translate+="%0 = icmp ne i32 %" ;
+			}
+
+			//kończenie ifa
+			translate+=valueQueue.poll()+", %"+valueQueue.poll()+"\n";
+			translate+="br il %0, label %"+getNextLabel(true);
+			if(isFalseInCondition(ctx.getParent().children)){
+				translate+= ", label %"+getNextLabel(false);
+			}
+			translate+= "\n";
+
+		}
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -228,7 +259,13 @@ public class CSharpBaseListener implements CSharpListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterValue(CSharpParser.ValueContext ctx) { }
+	@Override public void enterValue(CSharpParser.ValueContext ctx) {
+		if(ctx.VarName(0)!=null && ctx.MathOperator(0)==null){
+			valueQueue.add(ctx.VarName(0).toString());
+		}
+
+		//TODO trzeba tutaj zrobić dodawanie wsyztkch elementów
+	}
 	/**
 	 * {@inheritDoc}
 	 *
