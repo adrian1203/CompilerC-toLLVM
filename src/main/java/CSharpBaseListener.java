@@ -5,11 +5,7 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import java.lang.reflect.Array;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * This class provides an empty implementation of {@link CSharpListener},
@@ -22,6 +18,8 @@ public class CSharpBaseListener implements CSharpListener {
 	private Stack<Long> stackFalse = new Stack<>();
 	private Stack<Long> stackTrue = new Stack<>();
 	Queue<String> valueQueue = new LinkedList<String>();
+	Queue<String> labelValueQueue =new LinkedList<String>();
+	Map<String, String> mathOperators= new HashMap<>();
 
 
 	public String getNextLabel(boolean isTrueStack){
@@ -29,6 +27,10 @@ public class CSharpBaseListener implements CSharpListener {
 		(isTrueStack? stackTrue:stackFalse).push(labelCounter);
 		return String.valueOf(labelCounter);
 	}
+    public String getNextLabel(){
+        labelCounter++;
+        return String.valueOf(labelCounter);
+    }
 
 	public String getTranslate() {
 		return translate;
@@ -36,6 +38,10 @@ public class CSharpBaseListener implements CSharpListener {
 
 	public CSharpBaseListener( ) {
 		this.translate = "";
+		this.mathOperators.put("+", "add");
+		this.mathOperators.put("-", "sub");
+		this.mathOperators.put("*","mul");
+		this.mathOperators.put("/","sdiv");
 	}
 
 	public boolean isFalseInCondition(List<ParseTree> parseTree){
@@ -104,6 +110,9 @@ public class CSharpBaseListener implements CSharpListener {
 	@Override public void exitLogicalStatement(CSharpParser.LogicalStatementContext ctx) {
 		if(ctx.Boolean()==null)
 		{
+            while(!labelValueQueue.isEmpty()){
+                translate+= labelValueQueue.poll()+"\n";
+            }
 			if(ctx.BooleanOperator().toString().equals("<")){
 				translate+="%0 = icmp slt i32 %" ;
 			}
@@ -124,6 +133,7 @@ public class CSharpBaseListener implements CSharpListener {
 			}
 
 			//kończenie ifa
+
 			translate+=valueQueue.poll()+", %"+valueQueue.poll()+"\n";
 			translate+="br il %0, label %"+getNextLabel(true);
 			if(isFalseInCondition(ctx.getParent().children)){
@@ -263,8 +273,104 @@ public class CSharpBaseListener implements CSharpListener {
 		if(ctx.VarName(0)!=null && ctx.MathOperator(0)==null){
 			valueQueue.add(ctx.VarName(0).toString());
 		}
+		else if(ctx.MathOperator().size()==1){
+		        String tmp="%";
+		        String labelName=getNextLabel();
+		        if(ctx.Float(0)!=null){
+                    if(ctx.Float(1)!=null){
+                        tmp+=labelName+" = f"+mathOperators.get(ctx.MathOperator(0).toString())+" float "+ctx.Float(0).toString()+", "+ctx.Float(1);
+                    }
+		            else if(ctx.VarName(0)!=null){
+                        tmp+=labelName+" = f"+mathOperators.get(ctx.MathOperator(0).toString())+" float %"+ctx.VarName(0).toString()+", "+ctx.Float(0);
+                    }else{
+                        tmp+=labelName+" = f"+mathOperators.get(ctx.MathOperator(0).toString())+" float "+ctx.Integer(0).toString()+", "+ctx.Float(0);
+                    }
+                }else if(ctx.Integer(0)!=null){
+		            if(ctx.Integer(1)!=null){
+                        tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 "+ctx.Integer(0).toString()+", "+ctx.Integer(1);
+                    }else {
+                        tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 "+ctx.Integer(0).toString()+", %"+ctx.VarName(0);
+                    }
+                }else {
+                    tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 %"+ctx.VarName(0).toString()+", %"+ctx.VarName(1);
 
-		//TODO trzeba tutaj zrobić dodawanie wsyztkch elementów
+                }
+		        valueQueue.add(labelName);
+		        labelValueQueue.add(tmp);
+        }else{
+            int floatCounter=0;
+            int integerCounter=0;
+            int varCounter=0;
+            int forCounter=0;
+		    if(ctx.Float(0)!=null){
+		        for(TerminalNode terminalNode : ctx.MathOperator()){
+                    String tmp="%";
+                    String labelName=getNextLabel();
+		            if(forCounter==0){
+		                if(ctx.Float(1)!=null){
+                            tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.Float(0).toString()+", "+ctx.Float(1);
+                            floatCounter=2;
+                        }else if(ctx.Integer(0)!=null){
+                            tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.Integer(0).toString()+", "+ctx.Float(0);
+                            floatCounter=1;
+                            integerCounter=1;
+                        }else{
+                            tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float %"+ctx.VarName(0).toString()+", "+ctx.Float(0);
+                            floatCounter=1;
+                            varCounter=1;
+		                }
+                    }
+		            else {
+                        if(ctx.Float(floatCounter)!=null){
+                            tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.Float(floatCounter).toString()+", %"+valueQueue.poll();
+                            floatCounter++;
+                        }else if(ctx.Integer(integerCounter)!=null){
+                            tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.Integer(integerCounter).toString()+", %"+valueQueue.poll();
+                            integerCounter++;
+                        }else{
+                            tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.VarName(varCounter).toString()+", %"+valueQueue.poll();
+                            varCounter++;
+                        }
+                    }
+                    valueQueue.add(labelName);
+                    labelValueQueue.add(tmp);
+                    forCounter++;
+                }
+            }else{
+                for(TerminalNode terminalNode : ctx.MathOperator()){
+                    String tmp="%";
+                    String labelName=getNextLabel();
+                    if(forCounter==0){
+                        if(ctx.Integer(0)!=null){
+                            if(ctx.Integer(1)!=null){
+                                tmp+=labelName+" = "+mathOperators.get(terminalNode.toString())+" i32 "+ctx.Integer(0).toString()+", "+ctx.Integer(1);
+                                integerCounter=2;
+                            }else {
+                                tmp+=labelName+" = "+mathOperators.get(terminalNode.toString())+" i32 "+ctx.Integer(0).toString()+", %"+ctx.VarName(0);
+                                varCounter=1;
+                                integerCounter=1;
+                            }
+                        }else {
+                            tmp+=labelName+" = "+mathOperators.get(terminalNode.toString())+" i32 %"+ctx.VarName(0).toString()+", %"+ctx.VarName(1);
+                                varCounter=2;
+                        }
+                    }
+                    else {
+                        if(ctx.Integer(integerCounter)!=null){
+                            tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 "+ctx.Integer(integerCounter).toString()+", %"+valueQueue.poll();
+                            integerCounter++;
+                        }else{
+                            tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 "+ctx.VarName(varCounter).toString()+", %"+valueQueue.poll();
+                            varCounter++;
+                        }
+                    }
+                    valueQueue.add(labelName);
+                    labelValueQueue.add(tmp);
+                    forCounter++;
+                }
+            }
+        }
+		//ToDo zrobione przykłady dla float nteger i zmiennych chyba wystarczy
 	}
 	/**
 	 * {@inheritDoc}
