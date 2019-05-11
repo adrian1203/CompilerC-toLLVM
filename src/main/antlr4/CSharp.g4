@@ -17,7 +17,13 @@ ifStatement : If OpenBracket logicalStatement CloseBracket CurlyOpenBracket
             ((Else ifStatement)*
              Else CurlyOpenBracket statementBlockFalse CurlyCloseBracket)?;
 
-instructionsBlock : ( declaration | ifStatement | assignment)+;
+forStatement : For OpenBracket forAssigment Semicolon logicalStatement Semicolon incrementationStatment CloseBracket
+                CurlyOpenBracket statement CurlyCloseBracket ;
+
+
+
+incrementationStatment: (VarName Decrementation) | (VarName Incrementation) | value;
+instructionsBlock : ( declaration | ifStatement | forStatement|assignment)+;
 
 statementBlockTrue:  instructionsBlock;
 
@@ -44,7 +50,7 @@ assignment : IntegerType VarName EqualMark Integer Semicolon |
             StringType VarName EqualMark String Semicolon|
             DoubleType VarName EqualMark Float Semicolon;
 
-
+forAssigment: IntegerType VarName EqualMark Integer | VarName EqualMark IntegerType | VarName;
 Integer : Digit+;
 
 Float : Integer Dot Integer;
@@ -69,6 +75,7 @@ If : 'if';
 Elsif: 'elsif';
 Else: 'else';
 Then: 'then';
+For: 'for';
 IntegerType: 'int';
 FloatType: 'float';
 StringType: 'string';
@@ -87,6 +94,8 @@ SquareCloseBracket : ']';
 Apostrophe: '\'';
 CurlyOpenBracket:'{';
 CurlyCloseBracket:'}';
+Incrementation: '++';
+Decrementation:'--';
 
 Text : (Char)* ;
 Whitespace

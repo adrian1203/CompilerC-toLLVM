@@ -17,6 +17,9 @@ public class CSharpBaseListener implements CSharpListener {
 	private long labelCounter=0;
 	private Stack<Long> stackFalse = new Stack<>();
 	private Stack<Long> stackTrue = new Stack<>();
+	private Stack<Long> stackForAssigmentStart = new Stack<>();
+	//private Stack<Long> stackForAssigmentEnd
+
 	Queue<String> valueQueue = new LinkedList<String>();
 	Queue<String> labelValueQueue =new LinkedList<String>();
 	Map<String, String> mathOperators= new HashMap<>();
@@ -27,10 +30,10 @@ public class CSharpBaseListener implements CSharpListener {
 		(isTrueStack? stackTrue:stackFalse).push(labelCounter);
 		return String.valueOf(labelCounter);
 	}
-    public String getNextLabel(){
-        labelCounter++;
-        return String.valueOf(labelCounter);
-    }
+	public String getNextLabel(){
+		labelCounter++;
+		return String.valueOf(labelCounter);
+	}
 
 	public String getTranslate() {
 		return translate;
@@ -47,6 +50,12 @@ public class CSharpBaseListener implements CSharpListener {
 	public boolean isFalseInCondition(List<ParseTree> parseTree){
 		for(ParseTree x:  parseTree){
 			if(x.getClass() == (CSharpParser.StatementBlockFalseContext.class)) return true;
+		}
+		return false;
+	}
+	public boolean isForLogicalStatement(List<ParseTree> parseTree){
+		for(ParseTree x:  parseTree){
+			if(x.getClass() == (CSharpParser.ForAssigmentContext.class)) return true;
 		}
 		return false;
 	}
@@ -98,6 +107,8 @@ public class CSharpBaseListener implements CSharpListener {
 			translate +=  "br i1 "+ctx.Boolean().toString()+", label %"+getNextLabel(true);
 			if(isFalseInCondition(ctx.getParent().children)){
 				translate+= ", label %"+getNextLabel(false);
+			}else if(isForLogicalStatement(ctx.getParent().children)){
+				translate+= ", label %"+getNextLabel(false);
 			}
 			translate+= "\n";
 		}
@@ -110,9 +121,9 @@ public class CSharpBaseListener implements CSharpListener {
 	@Override public void exitLogicalStatement(CSharpParser.LogicalStatementContext ctx) {
 		if(ctx.Boolean()==null)
 		{
-            while(!labelValueQueue.isEmpty()){
-                translate+= labelValueQueue.poll()+"\n";
-            }
+			while(!labelValueQueue.isEmpty()){
+				translate+= labelValueQueue.poll()+"\n";
+			}
 			if(ctx.BooleanOperator().toString().equals("<")){
 				translate+="%0 = icmp slt i32 %" ;
 			}
@@ -138,7 +149,9 @@ public class CSharpBaseListener implements CSharpListener {
 			translate+="br il %0, label %"+getNextLabel(true);
 			if(isFalseInCondition(ctx.getParent().children)){
 				translate+= ", label %"+getNextLabel(false);
-			}
+			}else if(isForLogicalStatement(ctx.getParent().children)){
+			translate+= ", label %"+getNextLabel(false);
+		}
 			translate+= "\n";
 
 		}
@@ -156,6 +169,45 @@ public class CSharpBaseListener implements CSharpListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitIfStatement(CSharpParser.IfStatementContext ctx) { }
+
+	@Override
+	public void enterForStatement(CSharpParser.ForStatementContext ctx) {
+		System.out.println("JESTm w forrze");
+
+	}
+
+	@Override
+	public void exitForStatement(CSharpParser.ForStatementContext ctx) {
+		translate+="br label %"+stackForAssigmentStart.pop().toString()+"\n";
+		translate+=stackFalse.pop().toString()+": \n";
+
+	}
+
+	@Override
+	public void enterIncrementationStatment(CSharpParser.IncrementationStatmentContext ctx) {
+		String label = getNextLabel();
+		stackForAssigmentStart.push(Long.valueOf(label));
+		translate+= label+":"+"\n";
+
+		if(ctx.Decrementation()!=null){
+			translate+="%"+ctx.VarName().toString()+" = sub i32 %"+ctx.VarName().toString()+", 1 \n";
+		}
+		if(ctx.Incrementation()!=null){
+			translate+="%"+ctx.VarName().toString()+" = add i32 %"+ctx.VarName().toString()+", 1 \n";
+		}
+
+	}
+
+	@Override
+	public void exitIncrementationStatment(CSharpParser.IncrementationStatmentContext ctx) {
+
+		String label = stackTrue.pop().toString();
+		Long lastlabel = stackForAssigmentStart.pop();
+		translate+="br label %"+stackForAssigmentStart.pop().toString()+"\n";
+		stackForAssigmentStart.push(lastlabel);
+		translate+=label+": \n";
+	}
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -274,102 +326,102 @@ public class CSharpBaseListener implements CSharpListener {
 			valueQueue.add(ctx.VarName(0).toString());
 		}
 		else if(ctx.MathOperator().size()==1){
-		        String tmp="%";
-		        String labelName=getNextLabel();
-		        if(ctx.Float(0)!=null){
-                    if(ctx.Float(1)!=null){
-                        tmp+=labelName+" = f"+mathOperators.get(ctx.MathOperator(0).toString())+" float "+ctx.Float(0).toString()+", "+ctx.Float(1);
-                    }
-		            else if(ctx.VarName(0)!=null){
-                        tmp+=labelName+" = f"+mathOperators.get(ctx.MathOperator(0).toString())+" float %"+ctx.VarName(0).toString()+", "+ctx.Float(0);
-                    }else{
-                        tmp+=labelName+" = f"+mathOperators.get(ctx.MathOperator(0).toString())+" float "+ctx.Integer(0).toString()+", "+ctx.Float(0);
-                    }
-                }else if(ctx.Integer(0)!=null){
-		            if(ctx.Integer(1)!=null){
-                        tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 "+ctx.Integer(0).toString()+", "+ctx.Integer(1);
-                    }else {
-                        tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 "+ctx.Integer(0).toString()+", %"+ctx.VarName(0);
-                    }
-                }else {
-                    tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 %"+ctx.VarName(0).toString()+", %"+ctx.VarName(1);
+			String tmp="%";
+			String labelName=getNextLabel();
+			if(ctx.Float(0)!=null){
+				if(ctx.Float(1)!=null){
+					tmp+=labelName+" = f"+mathOperators.get(ctx.MathOperator(0).toString())+" float "+ctx.Float(0).toString()+", "+ctx.Float(1);
+				}
+				else if(ctx.VarName(0)!=null){
+					tmp+=labelName+" = f"+mathOperators.get(ctx.MathOperator(0).toString())+" float %"+ctx.VarName(0).toString()+", "+ctx.Float(0);
+				}else{
+					tmp+=labelName+" = f"+mathOperators.get(ctx.MathOperator(0).toString())+" float "+ctx.Integer(0).toString()+", "+ctx.Float(0);
+				}
+			}else if(ctx.Integer(0)!=null){
+				if(ctx.Integer(1)!=null){
+					tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 "+ctx.Integer(0).toString()+", "+ctx.Integer(1);
+				}else {
+					tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 "+ctx.Integer(0).toString()+", %"+ctx.VarName(0);
+				}
+			}else {
+				tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 %"+ctx.VarName(0).toString()+", %"+ctx.VarName(1);
 
-                }
-		        valueQueue.add(labelName);
-		        labelValueQueue.add(tmp);
-        }else{
-            int floatCounter=0;
-            int integerCounter=0;
-            int varCounter=0;
-            int forCounter=0;
-		    if(ctx.Float(0)!=null){
-		        for(TerminalNode terminalNode : ctx.MathOperator()){
-                    String tmp="%";
-                    String labelName=getNextLabel();
-		            if(forCounter==0){
-		                if(ctx.Float(1)!=null){
-                            tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.Float(0).toString()+", "+ctx.Float(1);
-                            floatCounter=2;
-                        }else if(ctx.Integer(0)!=null){
-                            tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.Integer(0).toString()+", "+ctx.Float(0);
-                            floatCounter=1;
-                            integerCounter=1;
-                        }else{
-                            tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float %"+ctx.VarName(0).toString()+", "+ctx.Float(0);
-                            floatCounter=1;
-                            varCounter=1;
-		                }
-                    }
-		            else {
-                        if(ctx.Float(floatCounter)!=null){
-                            tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.Float(floatCounter).toString()+", %"+valueQueue.poll();
-                            floatCounter++;
-                        }else if(ctx.Integer(integerCounter)!=null){
-                            tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.Integer(integerCounter).toString()+", %"+valueQueue.poll();
-                            integerCounter++;
-                        }else{
-                            tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.VarName(varCounter).toString()+", %"+valueQueue.poll();
-                            varCounter++;
-                        }
-                    }
-                    valueQueue.add(labelName);
-                    labelValueQueue.add(tmp);
-                    forCounter++;
-                }
-            }else{
-                for(TerminalNode terminalNode : ctx.MathOperator()){
-                    String tmp="%";
-                    String labelName=getNextLabel();
-                    if(forCounter==0){
-                        if(ctx.Integer(0)!=null){
-                            if(ctx.Integer(1)!=null){
-                                tmp+=labelName+" = "+mathOperators.get(terminalNode.toString())+" i32 "+ctx.Integer(0).toString()+", "+ctx.Integer(1);
-                                integerCounter=2;
-                            }else {
-                                tmp+=labelName+" = "+mathOperators.get(terminalNode.toString())+" i32 "+ctx.Integer(0).toString()+", %"+ctx.VarName(0);
-                                varCounter=1;
-                                integerCounter=1;
-                            }
-                        }else {
-                            tmp+=labelName+" = "+mathOperators.get(terminalNode.toString())+" i32 %"+ctx.VarName(0).toString()+", %"+ctx.VarName(1);
-                                varCounter=2;
-                        }
-                    }
-                    else {
-                        if(ctx.Integer(integerCounter)!=null){
-                            tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 "+ctx.Integer(integerCounter).toString()+", %"+valueQueue.poll();
-                            integerCounter++;
-                        }else{
-                            tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 "+ctx.VarName(varCounter).toString()+", %"+valueQueue.poll();
-                            varCounter++;
-                        }
-                    }
-                    valueQueue.add(labelName);
-                    labelValueQueue.add(tmp);
-                    forCounter++;
-                }
-            }
-        }
+			}
+			valueQueue.add(labelName);
+			labelValueQueue.add(tmp);
+		}else{
+			int floatCounter=0;
+			int integerCounter=0;
+			int varCounter=0;
+			int forCounter=0;
+			if(ctx.Float(0)!=null){
+				for(TerminalNode terminalNode : ctx.MathOperator()){
+					String tmp="%";
+					String labelName=getNextLabel();
+					if(forCounter==0){
+						if(ctx.Float(1)!=null){
+							tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.Float(0).toString()+", "+ctx.Float(1);
+							floatCounter=2;
+						}else if(ctx.Integer(0)!=null){
+							tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.Integer(0).toString()+", "+ctx.Float(0);
+							floatCounter=1;
+							integerCounter=1;
+						}else{
+							tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float %"+ctx.VarName(0).toString()+", "+ctx.Float(0);
+							floatCounter=1;
+							varCounter=1;
+						}
+					}
+					else {
+						if(ctx.Float(floatCounter)!=null){
+							tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.Float(floatCounter).toString()+", %"+valueQueue.poll();
+							floatCounter++;
+						}else if(ctx.Integer(integerCounter)!=null){
+							tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.Integer(integerCounter).toString()+", %"+valueQueue.poll();
+							integerCounter++;
+						}else{
+							tmp+=labelName+" = f"+mathOperators.get(terminalNode.toString())+" float "+ctx.VarName(varCounter).toString()+", %"+valueQueue.poll();
+							varCounter++;
+						}
+					}
+					valueQueue.add(labelName);
+					labelValueQueue.add(tmp);
+					forCounter++;
+				}
+			}else{
+				for(TerminalNode terminalNode : ctx.MathOperator()){
+					String tmp="%";
+					String labelName=getNextLabel();
+					if(forCounter==0){
+						if(ctx.Integer(0)!=null){
+							if(ctx.Integer(1)!=null){
+								tmp+=labelName+" = "+mathOperators.get(terminalNode.toString())+" i32 "+ctx.Integer(0).toString()+", "+ctx.Integer(1);
+								integerCounter=2;
+							}else {
+								tmp+=labelName+" = "+mathOperators.get(terminalNode.toString())+" i32 "+ctx.Integer(0).toString()+", %"+ctx.VarName(0);
+								varCounter=1;
+								integerCounter=1;
+							}
+						}else {
+							tmp+=labelName+" = "+mathOperators.get(terminalNode.toString())+" i32 %"+ctx.VarName(0).toString()+", %"+ctx.VarName(1);
+							varCounter=2;
+						}
+					}
+					else {
+						if(ctx.Integer(integerCounter)!=null){
+							tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 "+ctx.Integer(integerCounter).toString()+", %"+valueQueue.poll();
+							integerCounter++;
+						}else{
+							tmp+=labelName+" = "+mathOperators.get(ctx.MathOperator(0).toString())+" i32 "+ctx.VarName(varCounter).toString()+", %"+valueQueue.poll();
+							varCounter++;
+						}
+					}
+					valueQueue.add(labelName);
+					labelValueQueue.add(tmp);
+					forCounter++;
+				}
+			}
+		}
 		//ToDo zrobione przykłady dla float nteger i zmiennych chyba wystarczy
 	}
 	/**
@@ -405,6 +457,22 @@ public class CSharpBaseListener implements CSharpListener {
 			translate+="@"+ctx.VarName().toString() + ctx.EqualMark().toString() + "global double "+ ctx.Float().toString();
 		}
 		translate+=", align 8 \n";
+	}
+
+	@Override
+	public void enterForAssigment(CSharpParser.ForAssigmentContext ctx) {
+		if(ctx.IntegerType()!=null){
+			translate+="@"+ctx.VarName().toString() + ctx.EqualMark().toString() + "global i32 "+ ctx.Integer().toString();
+		}else if (ctx.EqualMark()!=null){
+			translate+="@"+ctx.VarName().toString() + ctx.EqualMark().toString() + "global i32 "+ ctx.Integer().toString();
+		}
+		String label = getNextLabel();
+		stackForAssigmentStart.push(Long.valueOf(label));
+		translate+= label+":"+"\n";
+	}
+
+	@Override
+	public void exitForAssigment(CSharpParser.ForAssigmentContext ctx) {
 	}
 
 	/**

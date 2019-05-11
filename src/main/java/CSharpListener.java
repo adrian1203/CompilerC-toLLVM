@@ -1,4 +1,4 @@
-// Generated from E:/AGH/Projekty/CompilerCSharpLLVM/src/main/antlr4\CSharp.g4 by ANTLR 4.7.2
+// Generated from C:/Users/Adrian/Desktop/Kompilatory/Projekt/CompilerCSharpLLVM/src/main/antlr4\CSharp.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -56,6 +56,26 @@ public interface CSharpListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIfStatement(CSharpParser.IfStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#forStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterForStatement(CSharpParser.ForStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#forStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitForStatement(CSharpParser.ForStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#incrementationStatment}.
+	 * @param ctx the parse tree
+	 */
+	void enterIncrementationStatment(CSharpParser.IncrementationStatmentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#incrementationStatment}.
+	 * @param ctx the parse tree
+	 */
+	void exitIncrementationStatment(CSharpParser.IncrementationStatmentContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CSharpParser#instructionsBlock}.
 	 * @param ctx the parse tree
@@ -156,4 +176,14 @@ public interface CSharpListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAssignment(CSharpParser.AssignmentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#forAssigment}.
+	 * @param ctx the parse tree
+	 */
+	void enterForAssigment(CSharpParser.ForAssigmentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#forAssigment}.
+	 * @param ctx the parse tree
+	 */
+	void exitForAssigment(CSharpParser.ForAssigmentContext ctx);
 }
