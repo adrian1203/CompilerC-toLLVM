@@ -22,9 +22,7 @@ forStatement : For OpenBracket forAssigment Semicolon logicalStatement Semicolon
 
 whileStatement : While OpenBracket logicalStatement CloseBracket CurlyOpenBracket statement CurlyCloseBracket;
 doWhileStatement : Do CurlyOpenBracket statement CurlyCloseBracket While OpenBracket logicalStatement CloseBracket;
-//switch:Switch OpenBracket statement CloseBracket CurlyOpenBracket (case)+ CurlyCloseBracket;
-//case: Case (VarName  | Integer | Float | String| CharAss ) Colon statement Break Semicolon;
-//Todo do porpawy witch case żeby gramatyka przechodziła xD
+
 
 
 
