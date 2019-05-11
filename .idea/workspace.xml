@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1397b42c-d8bd-4500-b3d8-ba3401ec129c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/antlr4/CSharp.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/antlr4/CSharp.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CSharp.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CSharp.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CSharp.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CSharp.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CSharpBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CSharpBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CSharpLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CSharpLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CSharpLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CSharpLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CSharpLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CSharpLexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CSharpListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CSharpListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CSharpParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CSharpParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainCSharp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainCSharp.java" afterDir="false" />
-    </list>
+    <list default="true" id="1397b42c-d8bd-4500-b3d8-ba3401ec129c" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -199,7 +187,7 @@
     <property name="$PROJECT_DIR$/src/main/antlr4/Chat.g4::/output-dir" value="E:\AGH\SemestrVI\OneDrive\Kompilatory\GitProject\CompilerCSharpLLVM\src\main\java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557610974073" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557611265287" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -311,12 +299,12 @@
       <workItem from="1557076083713" duration="11395000" />
       <workItem from="1557247596337" duration="6260000" />
       <workItem from="1557403830128" duration="1260000" />
-      <workItem from="1557584347922" duration="17298000" />
+      <workItem from="1557584347922" duration="17323000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77366000" />
+    <option name="totallyTimeSpent" value="77391000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
