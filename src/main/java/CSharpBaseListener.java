@@ -59,6 +59,14 @@ public class CSharpBaseListener implements CSharpListener {
 		}
 		return false;
 	}
+	public boolean isWhileLogicalStatemnt(ParserRuleContext parserRuleContext){
+		if(parserRuleContext.getClass() == (CSharpParser.WhileStatementContext.class)) return true;
+		return false;
+	}
+	public boolean isDoWhileLogicalStatemnt(ParserRuleContext parserRuleContext){
+		if(parserRuleContext.getClass() == (CSharpParser.DoWhileStatementContext.class)) return true;
+		return false;
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -104,12 +112,23 @@ public class CSharpBaseListener implements CSharpListener {
 	@Override public void enterLogicalStatement(CSharpParser.LogicalStatementContext ctx) {
 		if(ctx.Boolean()!=null)
 		{
-			translate +=  "br i1 "+ctx.Boolean().toString()+", label %"+getNextLabel(true);
+			if(isDoWhileLogicalStatemnt(ctx.getParent())){
+				translate +=  "br i1 "+ctx.Boolean().toString()+", label %"+stackForAssigmentStart.pop().toString();
+
+			}else{
+				translate +=  "br i1 "+ctx.Boolean().toString()+", label %"+getNextLabel(true);
+
+			}
 			if(isFalseInCondition(ctx.getParent().children)){
 				translate+= ", label %"+getNextLabel(false);
 			}else if(isForLogicalStatement(ctx.getParent().children)){
 				translate+= ", label %"+getNextLabel(false);
-			}
+			}else if(isWhileLogicalStatemnt(ctx.getParent())){
+				translate+= ", label %"+getNextLabel(false)+"\n";
+				translate+=stackTrue.pop().toString()+":";
+			}else if(isDoWhileLogicalStatemnt(ctx.getParent())){
+			translate+= ", label %"+getNextLabel(false);
+		}
 			translate+= "\n";
 		}
 	}
@@ -146,12 +165,25 @@ public class CSharpBaseListener implements CSharpListener {
 			//kończenie ifa
 
 			translate+=valueQueue.poll()+", %"+valueQueue.poll()+"\n";
-			translate+="br il %0, label %"+getNextLabel(true);
+			if(isDoWhileLogicalStatemnt(ctx.getParent())){
+				translate+="br il %0, label %"+stackForAssigmentStart.pop().toString();
+
+			}else{
+				translate+="br il %0, label %"+getNextLabel(true);
+
+			}
+			//translate+="br il %0, label %"+getNextLabel(true);
 			if(isFalseInCondition(ctx.getParent().children)){
 				translate+= ", label %"+getNextLabel(false);
 			}else if(isForLogicalStatement(ctx.getParent().children)){
-			translate+= ", label %"+getNextLabel(false);
-		}
+				translate+= ", label %"+getNextLabel(false);
+			}else if(isWhileLogicalStatemnt(ctx.getParent())){
+				translate+= ", label %"+getNextLabel(false)+"\n";
+				translate+=stackTrue.pop().toString()+":";
+			}else if(isDoWhileLogicalStatemnt(ctx.getParent())){
+				translate+= ", label %"+getNextLabel(false);
+//			translate+=stackTrue.pop().toString()+":";
+			}
 			translate+= "\n";
 
 		}
@@ -172,7 +204,6 @@ public class CSharpBaseListener implements CSharpListener {
 
 	@Override
 	public void enterForStatement(CSharpParser.ForStatementContext ctx) {
-		System.out.println("JESTm w forrze");
 
 	}
 
@@ -181,6 +212,32 @@ public class CSharpBaseListener implements CSharpListener {
 		translate+="br label %"+stackForAssigmentStart.pop().toString()+"\n";
 		translate+=stackFalse.pop().toString()+": \n";
 
+	}
+
+	@Override
+	public void enterWhileStatement(CSharpParser.WhileStatementContext ctx) {
+		String label = getNextLabel();
+		translate+=label+": \n";
+		stackForAssigmentStart.push(Long.valueOf(label));
+	}
+
+	@Override
+	public void exitWhileStatement(CSharpParser.WhileStatementContext ctx) {
+		translate+="br label %"+stackForAssigmentStart.pop().toString()+"\n";
+		translate+=stackFalse.pop().toString()+": \n";
+
+	}
+
+	@Override
+	public void enterDoWhileStatement(CSharpParser.DoWhileStatementContext ctx) {
+		String label = getNextLabel();
+		translate+=label+": \n";
+		stackForAssigmentStart.push(Long.valueOf(label));
+	}
+
+	@Override
+	public void exitDoWhileStatement(CSharpParser.DoWhileStatementContext ctx) {
+		translate+=stackFalse.pop().toString()+": \n";
 	}
 
 	@Override

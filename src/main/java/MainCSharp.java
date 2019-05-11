@@ -15,9 +15,15 @@ public class MainCSharp {
             //for(int i = 0;a+b+5<b;i++) {int a = 10;}
             //for(int i = 0 ; true ; i++) {int a = 10;}
             //for(int i = 0 ; a-9<i+9 ; i++) {if(d-6>y) {int a = 10;} else { int b = 10;}}
+            //while(true){for(int i = 0 ; a-9<i+9 ; i++) {if(d-6>y) {int a = 10;} else { for(int i = 0 ; a-9<i+9 ; i++) {if(d-6>y) {int a = 10;} else { int b = 10;}}}}}
+//            while(true){int a = 10;}
+//            while(a+b+7>78+l){int a = 10;}
+//            do{while(a+b+7>78+l){int a = 10;}}while(d-6>y)
+
+
 
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Podaj kod do C#  trnaslacji");
+            System.out.println("Podaj kod  C# do trnaslacji");
 
             tmp = scanner.nextLine();
             ANTLRInputStream input = new ANTLRInputStream(tmp);

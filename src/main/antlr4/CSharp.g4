@@ -20,10 +20,13 @@ ifStatement : If OpenBracket logicalStatement CloseBracket CurlyOpenBracket
 forStatement : For OpenBracket forAssigment Semicolon logicalStatement Semicolon incrementationStatment CloseBracket
                 CurlyOpenBracket statement CurlyCloseBracket ;
 
+whileStatement : While OpenBracket logicalStatement CloseBracket CurlyOpenBracket statement CurlyCloseBracket;
+doWhileStatement : Do CurlyOpenBracket statement CurlyCloseBracket While OpenBracket logicalStatement CloseBracket;
+
 
 
 incrementationStatment: (VarName Decrementation) | (VarName Incrementation) | value;
-instructionsBlock : ( declaration | ifStatement | forStatement|assignment)+;
+instructionsBlock : ( declaration | ifStatement | whileStatement | doWhileStatement| forStatement|assignment)+;
 
 statementBlockTrue:  instructionsBlock;
 
@@ -76,6 +79,8 @@ Elsif: 'elsif';
 Else: 'else';
 Then: 'then';
 For: 'for';
+While: 'while';
+Do:'do';
 IntegerType: 'int';
 FloatType: 'float';
 StringType: 'string';
