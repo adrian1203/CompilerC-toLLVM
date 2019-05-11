@@ -87,6 +87,26 @@ public interface CSharpListener extends ParseTreeListener {
 	 */
 	void exitDoWhileStatement(CSharpParser.DoWhileStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CSharpParser#switch}.
+	 * @param ctx the parse tree
+	 */
+	void enterSwitch(CSharpParser.SwitchContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#switch}.
+	 * @param ctx the parse tree
+	 */
+	void exitSwitch(CSharpParser.SwitchContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CSharpParser#case}.
+	 * @param ctx the parse tree
+	 */
+	void enterCase(CSharpParser.CaseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CSharpParser#case}.
+	 * @param ctx the parse tree
+	 */
+	void exitCase(CSharpParser.CaseContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CSharpParser#incrementationStatment}.
 	 * @param ctx the parse tree
 	 */

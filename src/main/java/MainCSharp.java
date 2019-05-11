@@ -23,7 +23,7 @@ public class MainCSharp {
 
 
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Podaj kod  C# do trnaslacji");
+            System.out.println("Podaj kod  C# do translacji:");
 
             tmp = scanner.nextLine();
             ANTLRInputStream input = new ANTLRInputStream(tmp);

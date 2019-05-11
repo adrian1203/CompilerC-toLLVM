@@ -22,11 +22,16 @@ forStatement : For OpenBracket forAssigment Semicolon logicalStatement Semicolon
 
 whileStatement : While OpenBracket logicalStatement CloseBracket CurlyOpenBracket statement CurlyCloseBracket;
 doWhileStatement : Do CurlyOpenBracket statement CurlyCloseBracket While OpenBracket logicalStatement CloseBracket;
+//switch:Switch OpenBracket statement CloseBracket CurlyOpenBracket (case)+ CurlyCloseBracket;
+//case: Case (VarName  | Integer | Float | String| CharAss ) Colon statement Break Semicolon;
+//Todo do porpawy witch case żeby gramatyka przechodziła xD
+
+
 
 
 
 incrementationStatment: (VarName Decrementation) | (VarName Incrementation) | value;
-instructionsBlock : ( declaration | ifStatement | whileStatement | doWhileStatement| forStatement|assignment)+;
+instructionsBlock : ( declaration | ifStatement | whileStatement |  doWhileStatement| forStatement|assignment)+;
 
 statementBlockTrue:  instructionsBlock;
 
@@ -81,6 +86,9 @@ Then: 'then';
 For: 'for';
 While: 'while';
 Do:'do';
+Case:'case';
+Break:'break';
+Switch:'switch';
 IntegerType: 'int';
 FloatType: 'float';
 StringType: 'string';
@@ -101,6 +109,7 @@ CurlyOpenBracket:'{';
 CurlyCloseBracket:'}';
 Incrementation: '++';
 Decrementation:'--';
+Colon:':';
 
 Text : (Char)* ;
 Whitespace

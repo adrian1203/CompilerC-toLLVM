@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1397b42c-d8bd-4500-b3d8-ba3401ec129c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/antlr4/CSharp.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/antlr4/CSharp.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CSharp.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CSharp.interp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CSharp.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CSharp.tokens" afterDir="false" />
@@ -12,29 +13,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/CSharpListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CSharpListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CSharpParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CSharpParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainCSharp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainCSharp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpBaseListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpLexer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$ArrayDecContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$ArrayValContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$AssignmentContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$DeclarationContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$DeclarationListContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$ForAssigmentContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$ForStatementContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$IfStatementContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$IncrementationStatmentContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$InstructionsBlockContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$LogicalStatementContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$ProgramContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$StatementBlockFalseContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$StatementBlockTrueContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$StatementContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$ValueContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$VarTypeContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser$VariableDecContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CSharpParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MainCSharp.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -44,32 +22,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/main/antlr4/CSharp.g4">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="363">
-                    <caret line="28" column="83" selection-start-line="28" selection-start-column="83" selection-end-line="28" selection-end-column="83" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/MainCSharp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="20" column="57" selection-start-line="20" selection-end-line="21" />
+            <state relative-caret-position="-31">
+              <caret line="25" column="60" selection-start-line="25" selection-start-column="60" selection-end-line="25" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -80,17 +39,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/CSharpBaseListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1068">
-              <caret line="130" selection-start-line="130" selection-end-line="130" />
+            <state relative-caret-position="5117">
+              <caret line="301" column="1" selection-start-line="301" selection-start-column="1" selection-end-line="301" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#882#890#0" expanded="true" />
-                <element signature="e#940#948#0" expanded="true" />
-                <element signature="e#1297#1298#0" expanded="true" />
-                <element signature="e#1320#1321#0" expanded="true" />
-                <element signature="e#7516#7517#0" expanded="true" />
-                <element signature="e#7556#7557#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/antlr4/CSharp.g4">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-24">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
@@ -141,9 +103,9 @@
         <option value="$PROJECT_DIR$/target/generated-sources/antlr4/CSharpBaseListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/antlr4/CSharpBaseListener.java" />
-        <option value="$PROJECT_DIR$/src/main/antlr4/CSharp.g4" />
-        <option value="$PROJECT_DIR$/src/main/java/CSharpBaseListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/MainCSharp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CSharpBaseListener.java" />
+        <option value="$PROJECT_DIR$/src/main/antlr4/CSharp.g4" />
       </list>
     </option>
   </component>
@@ -218,11 +180,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="CSSharpLLVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CompilerCSharpLLVM" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -242,7 +199,7 @@
     <property name="$PROJECT_DIR$/src/main/antlr4/Chat.g4::/output-dir" value="E:\AGH\SemestrVI\OneDrive\Kompilatory\GitProject\CompilerCSharpLLVM\src\main\java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557602978687" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557610974073" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -354,12 +311,12 @@
       <workItem from="1557076083713" duration="11395000" />
       <workItem from="1557247596337" duration="6260000" />
       <workItem from="1557403830128" duration="1260000" />
-      <workItem from="1557584347922" duration="12534000" />
+      <workItem from="1557584347922" duration="17298000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72602000" />
+    <option name="totallyTimeSpent" value="77366000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -372,8 +329,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24357034" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18986385" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -382,14 +340,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.7299509" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.22585924" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.19639935" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Tool Output" order="9" sideWeight="0.49924356" weight="0.26350245" />
+      <window_info active="true" anchor="bottom" id="Tool Output" order="9" sideWeight="0.49924356" visible="true" weight="0.19476268" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50075644" side_tool="true" weight="0.26350245" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32936078" />
@@ -498,36 +456,30 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/antlr4/CSharpBaseListener.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/antlr4/CSharp.g4">
+    <entry file="file://$PROJECT_DIR$/src/main/java/MainCSharp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="28" column="83" selection-start-line="28" selection-start-column="83" selection-end-line="28" selection-end-column="83" />
+        <state relative-caret-position="-31">
+          <caret line="25" column="60" selection-start-line="25" selection-start-column="60" selection-end-line="25" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CSharpBaseListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1068">
-          <caret line="130" selection-start-line="130" selection-end-line="130" />
+        <state relative-caret-position="5117">
+          <caret line="301" column="1" selection-start-line="301" selection-start-column="1" selection-end-line="301" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#882#890#0" expanded="true" />
-            <element signature="e#940#948#0" expanded="true" />
-            <element signature="e#1297#1298#0" expanded="true" />
-            <element signature="e#1320#1321#0" expanded="true" />
-            <element signature="e#7516#7517#0" expanded="true" />
-            <element signature="e#7556#7557#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MainCSharp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/antlr4/CSharp.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="20" column="57" selection-start-line="20" selection-end-line="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-24">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
