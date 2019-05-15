@@ -241,6 +241,30 @@ public class CSharpBaseListener implements CSharpListener {
 	}
 
 	@Override
+	public void enterExpression(CSharpParser.ExpressionContext ctx) {
+		//translate+="wszedłęm w przypisanieeeeeeee \n";
+
+
+	}
+
+	@Override
+	public void exitExpression(CSharpParser.ExpressionContext ctx) {
+		//kolejki tych zmienhych, żeby zachować koleność
+		//todo
+		String lastLabel="";
+		while(!labelValueQueue.isEmpty()){
+			lastLabel=labelValueQueue.poll()+"\n";
+			translate+= lastLabel;
+		}
+		if(lastLabel.contains("float")){
+			translate+="store float %"+valueQueue.poll()+", %"+ctx.VarName().toString();
+		}
+		else if(lastLabel.contains("i32")){
+			translate+="store i32 %"+valueQueue.poll()+", %"+ctx.VarName().toString();
+		}
+	}
+
+	@Override
 	public void enterIncrementationStatment(CSharpParser.IncrementationStatmentContext ctx) {
 		String label = getNextLabel();
 		stackForAssigmentStart.push(Long.valueOf(label));
@@ -381,8 +405,10 @@ public class CSharpBaseListener implements CSharpListener {
 	@Override public void enterValue(CSharpParser.ValueContext ctx) {
 		if(ctx.VarName(0)!=null && ctx.MathOperator(0)==null){
 			valueQueue.add(ctx.VarName(0).toString());
+
 		}
 		else if(ctx.MathOperator().size()==1){
+
 			String tmp="%";
 			String labelName=getNextLabel();
 			if(ctx.Float(0)!=null){
@@ -407,6 +433,7 @@ public class CSharpBaseListener implements CSharpListener {
 			valueQueue.add(labelName);
 			labelValueQueue.add(tmp);
 		}else{
+
 			int floatCounter=0;
 			int integerCounter=0;
 			int varCounter=0;
@@ -486,7 +513,8 @@ public class CSharpBaseListener implements CSharpListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitValue(CSharpParser.ValueContext ctx) { }
+	@Override public void exitValue(CSharpParser.ValueContext ctx) {
+	}
 	/**
 	 * {@inheritDoc}
 	 *

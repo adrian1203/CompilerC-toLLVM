@@ -23,13 +23,15 @@ forStatement : For OpenBracket forAssigment Semicolon logicalStatement Semicolon
 whileStatement : While OpenBracket logicalStatement CloseBracket CurlyOpenBracket statement CurlyCloseBracket;
 doWhileStatement : Do CurlyOpenBracket statement CurlyCloseBracket While OpenBracket logicalStatement CloseBracket;
 
+expression : VarName EqualMark value Semicolon;
+
 
 
 
 
 
 incrementationStatment: (VarName Decrementation) | (VarName Incrementation) | value;
-instructionsBlock : ( declaration | ifStatement | whileStatement |  doWhileStatement| forStatement|assignment)+;
+instructionsBlock : ( declaration | ifStatement | whileStatement |  doWhileStatement| forStatement|assignment | expression)+;
 
 statementBlockTrue:  instructionsBlock;
 

@@ -11,15 +11,17 @@ public class MainCSharp {
         try {
             String tmp = "float b = 10.36; int b; char b = 'h'; double fff; double dddd = 120.456;";
             //TODO testowe przykłady do ifa
-           // if(a+3+3+k+2>4*h+3.0*4.0) {if(d-6>y) {int a = 10;} else { int b = 10;}} else {int c = 7;}
+            // if(a+3+3+k+2>4*h+3.0*4.0) {if(d-6>y) {int a = 10;} else { int b = 10;}} else {int c = 7;}
             //for(int i = 0;a+b+5<b;i++) {int a = 10;}
             //for(int i = 0 ; true ; i++) {int a = 10;}
             //for(int i = 0 ; a-9<i+9 ; i++) {if(d-6>y) {int a = 10;} else { int b = 10;}}
             //while(true){for(int i = 0 ; a-9<i+9 ; i++) {if(d-6>y) {int a = 10;} else { for(int i = 0 ; a-9<i+9 ; i++) {if(d-6>y) {int a = 10;} else { int b = 10;}}}}}
 //            while(true){int a = 10;}
 //            while(a+b+7>78+l){int a = 10;}
-//            do{while(a+b+7>78+l){int a = 10;}}while(d-6>y)
-
+//            do{int a = 10;}while(b>6)
+//            int a;
+//            a = 75 + 96;
+            // if(a+b+c > 6+9){int a = 10;}
 
 
             Scanner scanner = new Scanner(System.in);
