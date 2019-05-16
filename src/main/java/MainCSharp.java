@@ -16,9 +16,9 @@ public class MainCSharp {
             //for(int i = 0 ; true ; i++) {int a = 10;}
             //for(int i = 0 ; a-9<i+9 ; i++) {if(d-6>y) {int a = 10;} else { int b = 10;}}
             //while(true){for(int i = 0 ; a-9<i+9 ; i++) {if(d-6>y) {int a = 10;} else { for(int i = 0 ; a-9<i+9 ; i++) {if(d-6>y) {int a = 10;} else { int b = 10;}}}}}
-//            while(true){int a = 10;}
+//            while(a>9){ a = a+10+63;}
 //            while(a+b+7>78+l){int a = 10;}
-//            do{int a = 10;}while(b>6)
+//            do{int a = 10+69; b=a+96+c;}while(b>6)
 //            int a;
 //            a = 75 + 96;
             // if(a+b+c > 6+9){int a = 10;}

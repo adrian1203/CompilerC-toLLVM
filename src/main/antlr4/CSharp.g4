@@ -25,13 +25,15 @@ doWhileStatement : Do CurlyOpenBracket statement CurlyCloseBracket While OpenBra
 
 expression : VarName EqualMark value Semicolon;
 
+expressionAssigment: variableDec EqualMark value Semicolon;
+
 
 
 
 
 
 incrementationStatment: (VarName Decrementation) | (VarName Incrementation) | value;
-instructionsBlock : ( declaration | ifStatement | whileStatement |  doWhileStatement| forStatement|assignment | expression)+;
+instructionsBlock : ( declaration | ifStatement | whileStatement |  doWhileStatement| forStatement|assignment | expression | expressionAssigment)+;
 
 statementBlockTrue:  instructionsBlock;
 
