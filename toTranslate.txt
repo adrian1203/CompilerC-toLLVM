@@ -1,0 +1,15 @@
+int x = 10;
+    float b;
+    float c;
+    if (a > 4) {
+             if (a + 6 > c * 8) {
+                  x = 10+b;
+             } else {
+                 if (c > 7.9) {
+                     c = 10.0+b;
+                 }
+             }
+         }
+   else {
+            c = 12.6;
+         }
